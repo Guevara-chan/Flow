@@ -8,7 +8,7 @@
 -	5 root unit kinds with two warring promotions for each (reincarnates / ascendants).
 -	Hardcoded first law of thermodynamics without single trace of second one.
 -	Optical-based battle mechanics with offence commited by visual contact.
--	Distinctive reality abstraction atmosphere.
+-	Distinctive reality deconstruction atmosphere.
 
 ##/Requirements (tested)/:
 **Proc. Unit >=** *Pentium IV*, *2.0GHz*  
