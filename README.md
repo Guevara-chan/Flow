@@ -5,7 +5,9 @@
 **...Or try latest dev. build in project's** [[DropBox]] (https://www.dropbox.com/s/ywk7ybp4njxvfot/Flow.rar)
 
 ##/Featurae/:
--	5 root unit kinds with two warring promoted alts for each (reincarnates / ascendants).
+-	5 root unit kinds with two warring promotions for each (reincarnates / ascendants).
+-	Hardcoded first law of thermodynamics without single trace of second one.
+-	Optical-based battle mechanics with offence commited by visual contact.
 -	Distinctive reality abstraction atmosphere.
 
 ##/Requirements (tested)/:
