@@ -9,6 +9,7 @@
 -	Hardcoded first law of thermodynamics without single trace of second one.
 -	Optical-based battle mechanics with offence commited by visual contact.
 -	Distinctive reality deconstruction atmosphere.
+-	Random map generation mode.
 
 ##/Requirements (tested)/:
 **Proc. Unit >=** *Pentium IV*, *2.0GHz*  
