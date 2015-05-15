@@ -9,6 +9,7 @@
 -	Hardcoded first law of thermodynamics without single trace of second one.
 -	Optical-based battle mechanics with offence commited by visual contact.
 -	Distinctive reality deconstruction atmosphere.
+-	One map editor for players and developer.
 -	Random map generation mode.
 
 ##/Requirements (tested)/:
