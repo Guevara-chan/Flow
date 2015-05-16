@@ -7,7 +7,7 @@
 ##/Featurae/:
 -	5 root unit kinds with two warring promotion paths for each (reincarnates / ascendants).
 -	Quantum-management unit propogation, heavily inspired by classic 'Sentinel' game.
--	Total renunciation of in-battle randomizer with chess-level fair play in mind.
+-	Total renunciation of in-battle randomizing with chess-level fair play in mind.
 -	Hardcoded first law of thermodynamics without single trace of second one.
 -	Optical-based battle mechanics with offence commited by visual contact.
 -	Distinctive reality deconstruction atmosphere.
