@@ -26,3 +26,8 @@ To compile project just use 'Main.pb' as root sourcefile.
 **Hard Drive >=** *135MB*  
 **GCard:** *Radeon 9550+*  
 **Tech:** *DX7*, *WinXP+*
+
+## /Brief sampling of JPEG quality/:
+![Idea](https://m.gjcdn.net/screenshot-thumbnail/600x2000/10983.jpg)
+
+![Winds of change](https://m.gjcdn.net/screenshot-thumbnail/600x2000/10981.jpg)
