@@ -18,7 +18,7 @@
 It relies on Blitz3D freeware engine, which is bundled here as DLL.  
 To compile project just use 'Main.pb' as root sourcefile.  
 
-##/Requirements (tested)/:
+## /Requirements (tested)/:
 **Proc. Unit >=** *Pentium IV*, *2.0GHz*  
 **R.A.M. >=** *2.0GB*  
 **Hard Drive >=** *135MB*  
