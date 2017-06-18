@@ -1,8 +1,7 @@
 ## /Sum/:
 **Flow: God is Dead** is a largely experimental turn-based strategy, built entirely around concepts of entropy denial and raw energy management. Visualised in full 3D, it tends to combine surreal post-modernistic designs with clean retro GUI. Mostly reported as hardcore.
 
-**Go get it @** http://gamejolt.com/games/strategy-sim/flow-god-is-dead/1772/  
-**...Or try latest dev. build in project's** [[DropBox]] (https://www.dropbox.com/s/ywk7ybp4njxvfot/Flow.rar)
+**Go get it @** http://gamejolt.com/games/strategy-sim/flow-god-is-dead/1772/
 
 ## /Featurae/:
 -	5 root unit kinds with two warring promotion paths for each (reincarnates / ascendants).
