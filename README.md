@@ -6,7 +6,7 @@ Mostly reported as hardcore.
 
 **Go get it @** http://gamejolt.com/games/strategy-sim/flow-god-is-dead/1772/
 
-## /Featurae/:
+## /Featuræ/:
 -	5 root unit kinds with two warring promotion paths for each (reincarnates / ascendants).
 -	Quantum-management unit propogation, heavily inspired by classic 'Sentinel' game.
 -	Total renunciation of in-battle randomizing with chess-level fair play in mind.
