@@ -1,17 +1,17 @@
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 ; Flow's map editor v0.48 (Alpha)
-; Developed in 2007 by Guevara-chan.
+; Developed in 2009 by Guevara-chan.
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
 ; TODO[
-; Добавить проверку тегов разметки в брифингах.
-; Улучшить поддержку элеваторов.
-; ...Улучшить интерфейс.
+; Г„Г®ГЎГ ГўГЁГІГј ГЇГ°Г®ГўГҐГ°ГЄГі ГІГҐГЈГ®Гў Г°Г Г§Г¬ГҐГІГЄГЁ Гў ГЎГ°ГЁГґГЁГ­ГЈГ Гµ.
+; Г“Г«ГіГ·ГёГЁГІГј ГЇГ®Г¤Г¤ГҐГ°Г¦ГЄГі ГЅГ«ГҐГўГ ГІГ®Г°Г®Гў.
+; ...Г“Г«ГіГ·ГёГЁГІГј ГЁГ­ГІГҐГ°ГґГҐГ©Г±.
 ; ]TODO
 
 ; SDK Bugs[
-; CopyRect - не работает.
-; CopyPixel(Fast) - не копируют значение альфы.
+; CopyRect - Г­ГҐ Г°Г ГЎГ®ГІГ ГҐГІ.
+; CopyPixel(Fast) - Г­ГҐ ГЄГ®ГЇГЁГ°ГіГѕГІ Г§Г­Г Г·ГҐГ­ГЁГҐ Г Г«ГјГґГ».
 ; ]SDK Bugs
 
 ;{ Definitions
@@ -51,10 +51,10 @@ Enumeration ; Counter states
 EndEnumeration
 
 Enumeration   ; Platform types.
-#PVanilla     ; Стандартные платформы с первых build'ов.
-#PElevator    ; Менящие высоту блоки.
+#PVanilla     ; Г‘ГІГ Г­Г¤Г Г°ГІГ­Г»ГҐ ГЇГ«Г ГІГґГ®Г°Г¬Г» Г± ГЇГҐГ°ГўГ»Гµ build'Г®Гў.
+#PElevator    ; ГЊГҐГ­ГїГ№ГЁГҐ ГўГ»Г±Г®ГІГі ГЎГ«Г®ГЄГЁ.
 #PIgnorance   ; Reincarnates not welcome !
-#PObservatory ; Отсюда начинается Вознесение.
+#PObservatory ; ГЋГІГ±ГѕГ¤Г  Г­Г Г·ГЁГ­Г ГҐГІГ±Гї Г‚Г®Г§Г­ГҐГ±ГҐГ­ГЁГҐ.
 EndEnumeration
 
 Enumeration ; Alternatives.
@@ -143,7 +143,7 @@ PlayersCount.i
 HumanPlayers.i
 MultiPlayer.i
 ActivationFlag.i ; For AI
-WaitForFinish.i ; Пауза перед обьявлением результатов игры.
+WaitForFinish.i ; ГЏГ ГіГ§Г  ГЇГҐГ°ГҐГ¤ Г®ГЎГјГїГўГ«ГҐГ­ГЁГҐГ¬ Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў ГЁГЈГ°Г».
 CurrentTurn.i
 NextMapFName.S{#MAX_PATH}
 Infestation.i
@@ -444,8 +444,8 @@ EndProcedure
 
 Procedure SetupBox(*Entity, *Sizer, Offset = 0)
 Define Y, W = MeshWidth_(*Sizer), H = MeshHeight_(*Sizer), D = MeshDepth_(*Sizer)
-If Offset : Y = -H + Offset : Else : Y = -H / 2 : EndIf ; Корректировка.
-EntityBox_(*Entity, -W / 2, Y, -D / 2, W, H, D)         ; Ставим размер бокса.
+If Offset : Y = -H + Offset : Else : Y = -H / 2 : EndIf ; ГЉГ®Г°Г°ГҐГЄГІГЁГ°Г®ГўГЄГ .
+EntityBox_(*Entity, -W / 2, Y, -D / 2, W, H, D)         ; Г‘ГІГ ГўГЁГ¬ Г°Г Г§Г¬ГҐГ° ГЎГ®ГЄГ±Г .
 EndProcedure
 
 Macro PrepareObstacle(Entity, Offset = 0) ; Pseudo-procedure.
@@ -485,13 +485,13 @@ EndIf : I - 1 : Wend
 EndMacro
 
 Procedure ComplexEntityAlpha(*Entity, Alpha.F)
-ComplexEntityPrefix() : EntityAlpha_(*Child, Alpha) : EndIf ; Ставим Альфу.
+ComplexEntityPrefix() : EntityAlpha_(*Child, Alpha) : EndIf ; Г‘ГІГ ГўГЁГ¬ ГЂГ«ГјГґГі.
 If CountChildren_(*Child) : ComplexEntityAlpha(*Child, Alpha)
 ComplexEntityPostfix()
 EndProcedure
 
 Procedure ComplexEntityColor(*Entity, R, G, B)
-ComplexEntityPrefix() : EntityColor_(*Child, R, G, B) : EndIf ; Ставим цвет.
+ComplexEntityPrefix() : EntityColor_(*Child, R, G, B) : EndIf ; Г‘ГІГ ГўГЁГ¬ Г¶ГўГҐГІ.
 If CountChildren_(*Child) : ComplexEntityColor(*Child, R, G, B) 
 ComplexEntityPostfix()
 EndProcedure
@@ -554,7 +554,7 @@ EndProcedure
 
 Macro Quit() ; Partializer.
 SetWindowLong_(System\GameWindow, #GWL_WNDPROC, System\OldCallBack)
-EndBlitz3d_() : End ; Теперь выходим. Ну, в теории...
+EndBlitz3d_() : End ; Г’ГҐГЇГҐГ°Гј ГўГ»ГµГ®Г¤ГЁГ¬. ГЌГі, Гў ГІГҐГ®Г°ГЁГЁ...
 EndMacro
 ;}
 ;{ --Map management--
@@ -568,7 +568,7 @@ Case 4 : Color_(36, 238, 219)
 EndSelect
 EndProcedure
 
-Procedure MarkMinimap(*Being.Being) ; Доделать !
+Procedure MarkMinimap(*Being.Being) ; Г„Г®Г¤ГҐГ«Г ГІГј !
 Define X, Y
 With *Being
 X = 1 + \Square\ArrayPos\X * #MMCellSize : Y = 1 + \Square\ArrayPos\Y * #MMCellSize
@@ -707,28 +707,28 @@ Procedure ScriptDataBoard(*Being.Being)
 #TextBorder = 6
 Define TypeName.S, TextPoint.Point, Owner, TeamIdx, *Team.Team
 With *Being
-; Подготовка к отображению таблицы.
+; ГЏГ®Г¤ГЈГ®ГІГ®ГўГЄГ  ГЄ Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГѕ ГІГ ГЎГ«ГЁГ¶Г».
 SetBuffer_(ImageBuffer_(\DataBoard, 0))
 If \Ascended : DrawImage_(System\AscendantBoard, 0, 0)
 Else         : DrawImage_(System\DataBoard, 0, 0) : EndIf
 SetFont_(System\DataBoardFont)
 Owner = \Owner
 TextPoint\X = #TextBorder : TextPoint\Y = #TextBorder
-; Определение типа Сущности.
+; ГЋГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГІГЁГЇГ  Г‘ГіГ№Г­Г®Г±ГІГЁ.
 TypeName = BeingType2Name(\Type)
 If \Reincarnated : TypeName + " (R)" : ElseIf Ignorant(*Being) : TypeName + " [I]" : EndIf
-; Вывод данных.
+; Г‚Г»ГўГ®Г¤ Г¤Г Г­Г­Г»Гµ.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 If \Ascended : WhiteText("Kind: ") 
 Else         : WhiteText("Type: ") 
 EndIf : ColorText(TypeName)
 WhiteText("Owner: ") 
-If *Being\Owner ; Если это не нейтрал...
-TeamIdx = Player2TeamIdx(\Owner) ; Индекс.
-*Team = System\Teams(TeamIdx)    ; Указатель.
+If *Being\Owner ; Г…Г±Г«ГЁ ГЅГІГ® Г­ГҐ Г­ГҐГ©ГІГ°Г Г«...
+TeamIdx = Player2TeamIdx(\Owner) ; Г€Г­Г¤ГҐГЄГ±.
+*Team = System\Teams(TeamIdx)    ; Г“ГЄГ Г§Г ГІГҐГ«Гј.
 If *Team\PlayersCount > 1 : ColorText("Player " + Str(\Owner), 0)
 TeamText(" (Team " + Str(TeamIdx) + ")") : Else  : TeamText("Team " + Str(TeamIdx))
-EndIf ; иначе рапортуем нейтралитет:
+EndIf ; ГЁГ­Г Г·ГҐ Г°Г ГЇГ®Г°ГІГіГҐГ¬ Г­ГҐГ©ГІГ°Г Г«ГЁГІГҐГІ:
 Else : ColorText("Neutral")
 EndIf
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -736,15 +736,15 @@ WhiteText("Energy: ")
 TypeName = Str(\EnergyLevel)
 If \ReincarnationCost > 0 And Not Ignoring(\Square) : TypeName + "/" + Str(\ReincarnationCost) : EndIf
 ColorText(TypeName)
-If \Type = #BMeanie Or \Type = #BHunger Or \Type = #BFrostBite Or \Type = #BDesire ; Если Сущность может быть заморожена...
+If \Type = #BMeanie Or \Type = #BHunger Or \Type = #BFrostBite Or \Type = #BDesire ; Г…Г±Г«ГЁ Г‘ГіГ№Г­Г®Г±ГІГј Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј Г§Г Г¬Г®Г°Г®Г¦ГҐГ­Г ...
 ColorText("Can't be frozen.") 
 Else : WhiteTextCR("Not frozen.") 
 EndIf
-If \Type = #BSociety Or \Type = #BDefiler ; Если Сущность может открывать каналы...
+If \Type = #BSociety Or \Type = #BDefiler ; Г…Г±Г«ГЁ Г‘ГіГ№Г­Г®Г±ГІГј Г¬Г®Г¦ГҐГІ Г®ГІГЄГ°Г»ГўГ ГІГј ГЄГ Г­Г Г«Г»...
 TypeName = "Input " : Else : TypeName = "Output " : EndIf
 TypeName + "channels: --" : WhiteTextCR(TypeName)
-If \Ascended = #False ; Если сущность не вознесена...
-If CanBeInfected(*Being) ; Если Сущность может быть заражена...
+If \Ascended = #False ; Г…Г±Г«ГЁ Г±ГіГ№Г­Г®Г±ГІГј Г­ГҐ ГўГ®Г§Г­ГҐГ±ГҐГ­Г ...
+If CanBeInfected(*Being) ; Г…Г±Г«ГЁ Г‘ГіГ№Г­Г®Г±ГІГј Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј Г§Г Г°Г Г¦ГҐГ­Г ...
 WhiteTextCR("Infection level: --")
 Else : ColorText("Can't be infected.") 
 EndIf
@@ -758,7 +758,7 @@ EndIf
 WhiteText(TypeName + " range: ") : ColorText(Amount2Str(\AbsorbtionRange))
 WhiteText(TypeName + " count: ")
 TypeName = Amount2Str(\AbsorbtionCount)
-If \Ascended And Sacrificer(*Being) = #False ; Отдельно - вознесенным.
+If \Ascended And Sacrificer(*Being) = #False ; ГЋГІГ¤ГҐГ«ГјГ­Г® - ГўГ®Г§Г­ГҐГ±ГҐГ­Г­Г»Г¬.
 TypeName + "->" + Str(\AbsorbtionCount * 2)
 ElseIf \Reincarnated = #False And \Type <> #BEnigma And Sacrificer(*Being) = #False
 TypeName + "/"
@@ -766,10 +766,10 @@ If \AbsorbtionCount = #All : TypeName + Str(#AllReplacer)
 Else : TypeName + Str(\AbsorbtionCount / 2) : EndIf
 EndIf
 ColorText(TypeName)
-If \Ascended ; Если это аскендант...
+If \Ascended ; Г…Г±Г«ГЁ ГЅГІГ® Г Г±ГЄГҐГ­Г¤Г Г­ГІ...
 WhiteText("Personal matter: ") : ColorText(BeingType2Name(\Hatred))
 WhiteText("Transposition range: ") : ColorText(Amount2Str(\SpawningRange))
-Else ; Стандартная роспись:
+Else ; Г‘ГІГ Г­Г¤Г Г°ГІГ­Г Гї Г°Г®Г±ГЇГЁГ±Гј:
 WhiteText("Spawning range: ") : ColorText(Amount2Str(\SpawningRange))
 WhiteText("Spawning cost: ")
 TypeName = Amount2Str(\SpawningCost) 
@@ -786,17 +786,17 @@ SetFont_(System\TableFont)
 Player2Color(\Owner)
 SetBuffer_(ImageBuffer_(\Table, 0))
 ClsColor_(80, 80, 80) : Cls_()
-; ---Уголки---
+; ---Г“ГЈГ®Г«ГЄГЁ---
 #Corner = 4 : #InCorner = #Corner - 1
 Rect_(0, 0, #TABleWidth, #TABleHeight, #False) : Rect_(0, 0, #Corner, #Corner, #False)
-; ---/Уголки--
+; ---/Г“ГЈГ®Г«ГЄГЁ--
 Rect_(#TableWidth - #Corner, #TableHeight - #Corner, #Corner, #Corner, #False)
 If \EnergyLevel > #TableMax : Text = Str(#TableMax) : Else : Text = Str(\EnergyLevel) : EndIf
-Text_(#TABleWidth / 2, #TABleHeight / 2, Text, 1, 1) ; Самое главное.
-; ---Уголки---
+Text_(#TABleWidth / 2, #TABleHeight / 2, Text, 1, 1) ; Г‘Г Г¬Г®ГҐ ГЈГ«Г ГўГ­Г®ГҐ.
+; ---Г“ГЈГ®Г«ГЄГЁ---
 Color_(0, 0, 0) : Rect_(0, 0, #InCorner, #InCorner, #True) 
 Rect_(#TableWidth - #InCorner, #TableHeight - #InCorner, #InCorner, #InCorner, #True)
-; ---/Уголки--
+; ---/Г“ГЈГ®Г«ГЄГЁ--
 EndWith
 ScriptDataBoard(*Being)
 EndProcedure
@@ -817,7 +817,7 @@ Case #SAbsAndSpawn : EntityColor_(\Entity, 142, 26, 113)
 Case #SActiveBeing : EntityColor_(\Entity, 170, 170, 170)
 EndSelect
 EndWith
-If Register ; Регистрация:
+If Register ; ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї:
 AddElement(System\GUI\HLSquares())
 System\GUI\HLSquares() = *Square
 EndIf
@@ -857,7 +857,7 @@ EndProcedure
 
 Procedure CheckHumanCompetition(HP)
 Define I, ToFix = System\Level\PlayersCount
-If HP > 1 ; Если есть живые игроки.
+If HP > 1 ; Г…Г±Г«ГЁ ГҐГ±ГІГј Г¦ГЁГўГ»ГҐ ГЁГЈГ°Г®ГЄГЁ.
 For I = 1 To ToFix
 If System\Players(I)\IType = #IHuman And System\Players(I)\AlliedTeam <> System\Players(1)\AlliedTeam
 ProcedureReturn #True
@@ -913,7 +913,7 @@ EndMacro
 
 Procedure CreateBeing(*Square.Square, Type, Owner, RefreshCounter = #True)
 Define I, *Being.Being = #Null, *Mesh
-; Добавляем в список:
+; Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Гў Г±ГЇГЁГ±Г®ГЄ:
 AddElement(System\Beings()) 
 *Being = System\Beings()
 With *Being
@@ -921,10 +921,10 @@ With *Being
 \Owner = Owner : \Type = Type : \StoreLink = #NoLink ; Essential.
 If \Owner = 1 : \State = #BPreparing : Else : \State = #BBorning : EndIf
 *Square\Being = *Being : \Square = *Square : \Posterity = \Type
-\X = *Square\ArrayPos\X : \Y = *Square\ArrayPos\Y          ; Запоминаем позицию.
+\X = *Square\ArrayPos\X : \Y = *Square\ArrayPos\Y          ; Г‡Г ГЇГ®Г¬ГЁГ­Г ГҐГ¬ ГЇГ®Г§ГЁГ¶ГЁГѕ.
 If \Owner : System\Players(\Owner)\BeingsCount + 1 : EndIf ; Increse owner's beings count.
-If IsReincarnated(Type) : \Reincarnated = #True            ; Установить флаг реинкарнации.
-ElseIf IsAscended(Type) : \Ascended = #True : \SpawningCost = #All : EndIf ; Установить флаг вознесения.
+If IsReincarnated(Type) : \Reincarnated = #True            ; Г“Г±ГІГ Г­Г®ГўГЁГІГј ГґГ«Г ГЈ Г°ГҐГЁГ­ГЄГ Г°Г­Г Г¶ГЁГЁ.
+ElseIf IsAscended(Type) : \Ascended = #True : \SpawningCost = #All : EndIf ; Г“Г±ГІГ Г­Г®ГўГЁГІГј ГґГ«Г ГЈ ГўГ®Г§Г­ГҐГ±ГҐГ­ГЁГї.
 ; -Secondary parameters setup-
 Select Type
 Case #BTree
@@ -1012,7 +1012,7 @@ EndSelect
 If RefreshCounter And \Owner : System\Players(\Owner)\TotalEnergy + \EnergyLevel : ScriptCounter(\Owner) : EndIf
 ; -Entity setup-
 \Entity = CopyEntity_(*Mesh, *Square\Entity)
-SetOn(\Entity, *Square\Entity) ; Ставим на платформу.
+SetOn(\Entity, *Square\Entity) ; Г‘ГІГ ГўГЁГ¬ Г­Г  ГЇГ«Г ГІГґГ®Г°Г¬Гі.
 TurnBeing(*Being, DeltaYaw_(\Entity, System\Sky) - 180)
 ; -Optimization-
 If \Type = #BDesire
@@ -1023,7 +1023,7 @@ EndIf
 ; -EyePoint setup-
 \EyePoint = CreatePivot_(\Entity)
 If \Ascended : TranslateEntity_(\EyePoint, 0, #EyePointHeight * 1.5, 0) : EndIf
-Select \Type ; Смотрим по типу.
+Select \Type ; Г‘Г¬Г®ГІГ°ГЁГ¬ ГЇГ® ГІГЁГЇГі.
 Case #BSentry, #BJinx : TranslateEntity_(\EyePoint, 0, #EyePointHeight * 2.0, 0)
 Case #BSentinel : TranslateEntity_(\EyePoint, 0, #EyePointHeight * 3, 0)
 Case #BFrostBite : TranslateEntity_(\EyePoint, 0, #EyePointHeight * 0.8, 0)
@@ -1037,7 +1037,7 @@ MidHandle_(\Table)
 ScriptTable(*Being)
 ; -Make pickable-
 If System\Options\SelectBeingByModel : MakePickable(*Being) : EndIf
-; -Отобразить на мини-карте-
+; -ГЋГІГ®ГЎГ°Г Г§ГЁГІГј Г­Г  Г¬ГЁГ­ГЁ-ГЄГ Г°ГІГҐ-
 MarkMiniMap(*Being)
 EndWith
 VizualizeChanges()
@@ -1079,7 +1079,7 @@ If *Being\Owner : ScriptCounter(*Being\Owner) : EndIf
 *Being\Square\Being = #Null
 EndProcedure
 
-Procedure FormRect(*Rectangle.Rect) ; Left = X центра, Top = center Y центра, Right = радиус.
+Procedure FormRect(*Rectangle.Rect) ; Left = X Г¶ГҐГ­ГІГ°Г , Top = center Y Г¶ГҐГ­ГІГ°Г , Right = Г°Г Г¤ГЁГіГ±.
 Define Range
 With *Rectangle
 Range = \Right
@@ -1132,7 +1132,7 @@ FormRect(HLRect)
 For X = HLRect\Left To HLRect\Right
 For Y = HLRect\Top To HLRect\Bottom
 If (Abs(X - \Square\ArrayPos\X) + Abs(Y - \Square\ArrayPos\Y)) <= Range
-*Square = Squares(X, Y) ; Подсвечиваем, если действие допустимо:
+*Square = Squares(X, Y) ; ГЏГ®Г¤Г±ГўГҐГ·ГЁГўГ ГҐГ¬, ГҐГ±Г«ГЁ Г¤ГҐГ©Г±ГІГўГЁГҐ Г¤Г®ГЇГіГ±ГІГЁГ¬Г®:
 If ActionAvailable(*Being, *Square, Spawning) : HLSquare(*Square, HLState, #True) : EndIf
 EndIf
 Next Y
@@ -1179,7 +1179,7 @@ EndMacro
 
 Procedure CheckSaving()
 Define ErrorText.s = CanSave()
-If ErrorText <> "" ; Если сохранить не удастся...
+If ErrorText <> "" ; Г…Г±Г«ГЁ Г±Г®ГµГ°Г Г­ГЁГІГј Г­ГҐ ГіГ¤Г Г±ГІГ±Гї...
 ErrorBox(ErrorText, "Map saving error:")
 ProcedureReturn #True
 EndIf
@@ -1191,8 +1191,8 @@ While *Char\C : *Char\C ! 255 : *Char + SizeOf(Character) :Wend
 ProcedureReturn Pass
 EndProcedure
 
-Procedure SaveMap(FName.S) ; Доделать !
-; Проверка валидности карты.
+Procedure SaveMap(FName.S) ; Г„Г®Г¤ГҐГ«Г ГІГј !
+; ГЏГ°Г®ГўГҐГ°ГЄГ  ГўГ Г«ГЁГ¤Г­Г®Г±ГІГЁ ГЄГ Г°ГІГ».
 Define NewCode.s, X, Y, *Ptr, Header.S = #MapHeader, *ListPos, ErrorText.S, Result
 If CheckSaving() : ProcedureReturn #False : EndIf
 System\Level\HumanPlayers = CheckHumans()
@@ -1203,47 +1203,47 @@ If CreateFile(1, FName)
 WriteData(1, @Header, Len(Header))
 WriteLong(1, #True) ; Map Editor Flag.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-WriteLong(1, Len(System\LockCode))           ; Вписываем длину кода.
+WriteLong(1, Len(System\LockCode))           ; Г‚ГЇГЁГ±Г»ГўГ ГҐГ¬ Г¤Г«ГЁГ­Гі ГЄГ®Г¤Г .
 If System\LockCode : NewCode.s = InvalidatePass(System\LockCode)
-WriteData(1, @NewCode, Len(NewCode))         ; Вписываем код на изменение.
-EndIf : WriteLong(1, Len(System\PlayCode))   ; Вписываем длину кода.
+WriteData(1, @NewCode, Len(NewCode))         ; Г‚ГЇГЁГ±Г»ГўГ ГҐГ¬ ГЄГ®Г¤ Г­Г  ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГҐ.
+EndIf : WriteLong(1, Len(System\PlayCode))   ; Г‚ГЇГЁГ±Г»ГўГ ГҐГ¬ Г¤Г«ГЁГ­Гі ГЄГ®Г¤Г .
 If System\PlayCode : NewCode.s = InvalidatePass(System\PlayCode)
-WriteData(1, @NewCode, Len(NewCode)) : EndIf ; Вписываем код на игру.
+WriteData(1, @NewCode, Len(NewCode)) : EndIf ; Г‚ГЇГЁГ±Г»ГўГ ГҐГ¬ ГЄГ®Г¤ Г­Г  ГЁГЈГ°Гі.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 WriteData(1, @System\Level, SizeOf(LevelData))
-WriteLong(1, Len(System\Story)) ; Запись брифинга карты.
+WriteLong(1, Len(System\Story)) ; Г‡Г ГЇГЁГ±Гј ГЎГ°ГЁГґГЁГ­ГЈГ  ГЄГ Г°ГІГ».
 WriteData(1, @System\Story, Len(System\Story))
-WriteLong(1, Len(System\AfterStory)) ; Запись эпилога карты.
+WriteLong(1, Len(System\AfterStory)) ; Г‡Г ГЇГЁГ±Гј ГЅГЇГЁГ«Г®ГЈГ  ГЄГ Г°ГІГ».
 WriteData(1, @System\AfterStory, Len(System\AfterStory))
-; -Записать данных клеток-
+; -Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»Гµ ГЄГ«ГҐГІГ®ГЄ-
 For Y = 1 To System\Level\Height
 For X = 1 To System\Level\Width
 WriteData(1, @Squares(X - 1, Y - 1), SizeOf(Square))
 Next X
 Next Y
-; Записать данных игроков.
+; Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»Гµ ГЁГЈГ°Г®ГЄГ®Гў.
 WriteLong(1, System\Level\PlayersCount)
-For X = 1 To System\Level\PlayersCount ; Пишем все.
+For X = 1 To System\Level\PlayersCount ; ГЏГЁГёГҐГ¬ ГўГ±ГҐ.
 WriteData(1, System\Players(X), SizeOf(Player))
 Next X
-; Записываем данные комманд.
+; Г‡Г ГЇГЁГ±Г»ГўГ ГҐГ¬ Г¤Г Г­Г­Г»ГҐ ГЄГ®Г¬Г¬Г Г­Г¤.
 WriteLong(1, System\Level\TeamsCount)
-For X = 1 To System\Level\TeamsCount ; Пишем все.
+For X = 1 To System\Level\TeamsCount ; ГЏГЁГёГҐГ¬ ГўГ±ГҐ.
 WriteData(1, System\Teams(X), SizeOf(Team))
 Next X
-; Записать данные Сущностей.
+; Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»ГҐ Г‘ГіГ№Г­Г®Г±ГІГҐГ©.
 WriteLong(1, ListSize(System\Beings()))
-ForEach System\Beings() ; Пишем все.
+ForEach System\Beings() ; ГЏГЁГёГҐГ¬ ГўГ±ГҐ.
 WriteData(1, System\Beings(), SizeOf(Being))
 Next
-; Записать данные квантов (Dummy).
+; Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»ГҐ ГЄГўГ Г­ГІГ®Гў (Dummy).
 WriteLong(1, 0)
-; Записать позицию камеры.
+; Г‡Г ГЇГЁГ±Г ГІГј ГЇГ®Г§ГЁГ¶ГЁГѕ ГЄГ Г¬ГҐГ°Г».
 WriteLong(1, EntityZ_(System\CamPiv))
 WriteLong(1, EntityX_(System\CamPiv))
 WriteLong(1, EntityYaw_(System\CamPiv))
 WriteLong(1, EntityDistance_(System\Camera, System\CamPiv))
-; Записать позицию для выделения.
+; Г‡Г ГЇГЁГ±Г ГІГј ГЇГ®Г§ГЁГ¶ГЁГѕ Г¤Г«Гї ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї.
 If System\GUI\PickedSquare <> #Null
 WriteLong(1, EntityZ_(System\GUI\PickedSquare\Entity))
 WriteLong(1, EntityY_(System\GUI\PickedSquare\Entity))
@@ -1253,19 +1253,19 @@ WriteLong(1, EntityZ_(System\Selection))
 WriteLong(1, EntityY_(System\Selection))
 WriteLong(1, EntityX_(System\Selection))
 EndIf
-; Записать данные матрицы.
+; Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»ГҐ Г¬Г ГІГ°ГЁГ¶Г».
 ForEach System\GUI\Matrix() : *Ptr = System\GUI\Matrix()
 WriteLong(1, EntityZ_(*Ptr)) : WriteLong(1, EntityX_(*Ptr))
-WriteLong(1, EntityPitch_(*Ptr)) ; Другие углы не нужны.
+WriteLong(1, EntityPitch_(*Ptr)) ; Г„Г°ГіГЈГЁГҐ ГіГЈГ«Г» Г­ГҐ Г­ГіГ¦Г­Г».
 Next
-; Записать данные каналов (Dummy).
+; Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»ГҐ ГЄГ Г­Г Г«Г®Гў (Dummy).
 WriteLong(1, 0)
-; Записать данные эффектов перерождения (Dummy).
+; Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»ГҐ ГЅГґГґГҐГЄГІГ®Гў ГЇГҐГ°ГҐГ°Г®Г¦Г¤ГҐГ­ГЁГї (Dummy).
 WriteLong(1, 0)
-; Записать данные дождевых искр (Dummy).
+; Г‡Г ГЇГЁГ±Г ГІГј Г¤Г Г­Г­Г»ГҐ Г¤Г®Г¦Г¤ГҐГўГ»Гµ ГЁГ±ГЄГ° (Dummy).
 WriteLong(1, 0)
 WriteLong(1, 0)
-; Закрыть файл.
+; Г‡Г ГЄГ°Г»ГІГј ГґГ Г©Г«.
 CloseFile(1)
 Result = #True
 Else : ErrorBox("can't write to '" + FName + "' !", "Map saving error:")
@@ -1277,7 +1277,7 @@ EndProcedure
 Procedure SaveMapRequester()
 Define FName.S
 ShowPointer_()
-If CheckSaving() = #False ; Если возможно сохранение....
+If CheckSaving() = #False ; Г…Г±Г«ГЁ ГўГ®Г§Г¬Г®Г¦Г­Г® Г±Г®ГµГ°Г Г­ГҐГ­ГЁГҐ....
 FName = Trim(SaveFileRequester("Choose file to save map:", GetCurrentDirectory(), #SavePattern, 1))
 If FName <> "" 
 If GetExtensionPart(FName) = "" : FName + ".MAP" : EndIf
@@ -1293,10 +1293,10 @@ Procedure ShowResetWarning() ; Pseudo-procedure
 #YesNoCancel = #PB_MessageRequester_YesNoCancel
 If System\GUI\Changed = #True And System\Options\ResetWarning : ShowPointer_()
 Select MessageRequester("Warning:", "Map have been changed. Do you want save it before exit ?", #YesNoCancel)
-Case #PB_MessageRequester_Yes ; Согласие на сохранение.
+Case #PB_MessageRequester_Yes ; Г‘Г®ГЈГ«Г Г±ГЁГҐ Г­Г  Г±Г®ГµГ°Г Г­ГҐГ­ГЁГҐ.
 If System\GUI\MapFName <> "" : SaveMap(System\GUI\MapFName)
 Else : SaveMapRequester() : EndIf
-Case #PB_MessageRequester_Cancel ; Отмена действия.
+Case #PB_MessageRequester_Cancel ; ГЋГІГ¬ГҐГ­Г  Г¤ГҐГ©Г±ГІГўГЁГї.
 ProcedureReturn #True
 EndSelect
 EndIf
@@ -1313,7 +1313,7 @@ With System
 Define *Square.Square, *Tube, I, Factor, Count
 Define Height = Squares(X, Y)\Height, *Etalone
 If Vert : Factor = Y : Else : Factor = X : EndIf
-If Factor ; Если мы не в углу....
+If Factor ; Г…Г±Г«ГЁ Г¬Г» Г­ГҐ Гў ГіГЈГ«Гі....
 ; -Create connection tube-
 If Vert : *Square = Squares(X, Y - 1) : Else : *Square = Squares(X - 1, Y) : EndIf
 If *Square\CellType <> Squares(X, Y)\CellType : Count = 0 : Else : Count = Min(Height, *Square\Height) : EndIf
@@ -1335,11 +1335,11 @@ EndProcedure
 Procedure MatrixTubes(X, Y, Angle = 0)
 Define I, *Tube
 For I = 1 To #MatrixDepth ; Like that...
-*Tube = CopyEntity_(System\MatrixTube)               ; Делаем трубу.
-AddElement(System\GUI\Matrix()) : System\GUI\Matrix() = *Tube ; Вносим на баланс.
-SetOn(*Tube, Squares(X, Y)\TubesPiv)                          ; Ставим на место.
-TurnEntity_(*Tube, Random(180) + 0.1, Angle, 0)               ; Разворот для матрицы.
-MoveEntity_(*Tube, 0, Random(#TubeQuant), 0)                  ; Небольшой сдвиг.
+*Tube = CopyEntity_(System\MatrixTube)               ; Г„ГҐГ«Г ГҐГ¬ ГІГ°ГіГЎГі.
+AddElement(System\GUI\Matrix()) : System\GUI\Matrix() = *Tube ; Г‚Г­Г®Г±ГЁГ¬ Г­Г  ГЎГ Г«Г Г­Г±.
+SetOn(*Tube, Squares(X, Y)\TubesPiv)                          ; Г‘ГІГ ГўГЁГ¬ Г­Г  Г¬ГҐГ±ГІГ®.
+TurnEntity_(*Tube, Random(180) + 0.1, Angle, 0)               ; ГђГ Г§ГўГ®Г°Г®ГІ Г¤Г«Гї Г¬Г ГІГ°ГЁГ¶Г».
+MoveEntity_(*Tube, 0, Random(#TubeQuant), 0)                  ; ГЌГҐГЎГ®Г«ГјГёГ®Г© Г±Г¤ГўГЁГЈ.
 TranslateEntity_(*Tube, 0, #InfiniteCell + #HalfCell - #CellSize * (I + Squares(X, Y)\Height), 0)
 Next I
 EndProcedure
@@ -1352,13 +1352,13 @@ EndIf
 EndProcedure
 
 Macro HandleConnections(X, Y, Factor = #True)
-Reconnect(X, Y) ; Воссоединяем клетки.
+Reconnect(X, Y) ; Г‚Г®Г±Г±Г®ГҐГ¤ГЁГ­ГїГҐГ¬ ГЄГ«ГҐГІГЄГЁ.
 If X < System\Level\Width - 1  And Factor : ReConnect(X + 1, Y) : EndIf
 If Y < System\Level\Height - 1 And Factor : ReConnect(X, Y + 1) : EndIf
 EndMacro
 
 Macro SetupNodes(Elevator, Scale)
-PositionEntity_(GetChild_(Elevator, 1), 0, (Scale - 1) * -#CellSize, 0, 0) ; Сдвиг узлов.
+PositionEntity_(GetChild_(Elevator, 1), 0, (Scale - 1) * -#CellSize, 0, 0) ; Г‘Г¤ГўГЁГЈ ГіГ§Г«Г®Гў.
 EndMacro
 
 Procedure ReScalePlatform(X, Y, Scale)
@@ -1372,12 +1372,12 @@ HandleConnections(X, Y, OldHeight)
 EndProcedure
 
 Macro HideVisual(Entity, Flag) ; Pseudo-procedure.
-If Flag : HideEntity_(Entity) ; Просто скрываем.
+If Flag : HideEntity_(Entity) ; ГЏГ°Г®Г±ГІГ® Г±ГЄГ°Г»ГўГ ГҐГ¬.
 Else : EntityAlpha_(Entity, 0) : EntityPickMode_(Entity, 0, #False) : EndIf
 EndMacro
 
 Macro ShowVisual(Entity, Flag) ; Pseudo-procedure.
-If Flag : ShowEntity_(Entity) ; Просто показываем.
+If Flag : ShowEntity_(Entity) ; ГЏГ°Г®Г±ГІГ® ГЇГ®ГЄГ Г§Г»ГўГ ГҐГ¬.
 Else : EntityAlpha_(Entity, 1) : EntityPickMode_(Entity, 3, #True) : EndIf
 EndMacro
 
@@ -1392,14 +1392,14 @@ EndProcedure
 Procedure ChangePlatform(XPos, YPos, Gold, NewScale = 0)
 Define *Cell.Square = Squares(XPos, YPos), *Tex
 With System
-Select *Cell\CellType ; По типу клетки...
+Select *Cell\CellType ; ГЏГ® ГІГЁГЇГі ГЄГ«ГҐГІГЄГЁ...
 Case #pIgnorance : RotateEntity_(*Cell\Visuals(#AIgnorance), 0, Gold * 90, 0)
-Case #pVanilla   ; Платформы:
+Case #pVanilla   ; ГЏГ«Г ГІГґГ®Г°Г¬Г»:
 HideVisual(*Cell\Visuals(#AVanilla),*Cell\Gold):GoldInverse(Gold,*Cell):ShowVisual(*Cell\Visuals(#AVanilla),Gold)
-Case #pElevator  ; Элеваторы:
+Case #pElevator  ; ГќГ«ГҐГўГ ГІГ®Г°Г»:
 HideEntity_(*Cell\Visuals(#AElevator)) : GoldInverse(Gold, *Cell) : ShowEntity_(*Cell\Visuals(#AElevator))
-EndSelect ; Выставляем, наконец, флаг:
-*Cell\Gold = Gold ; Переставляем масштаб, если есть такая нужда:
+EndSelect ; Г‚Г»Г±ГІГ ГўГ«ГїГҐГ¬, Г­Г ГЄГ®Г­ГҐГ¶, ГґГ«Г ГЈ:
+*Cell\Gold = Gold ; ГЏГҐГ°ГҐГ±ГІГ ГўГ«ГїГҐГ¬ Г¬Г Г±ГёГІГ ГЎ, ГҐГ±Г«ГЁ ГҐГ±ГІГј ГІГ ГЄГ Гї Г­ГіГ¦Г¤Г :
 If *Cell\CellType <> #PIgnorance And *Cell\Being And *Cell\Being\Ascended : RemoveBeing(*Cell\Being) : EndIf
 If NewScale And NewScale <> *Cell\Height : ReScalePlatform(XPos, YPos, NewScale) : EndIf
 EndWith
@@ -1407,43 +1407,43 @@ EndProcedure
 
 Procedure ReStructureCell(XPos, YPos, NewType, SkipRemoval = #False)
 Define *Cell.Square = Squares(XPos, YPos)
-With *Cell ; Начинаем обработку клетки...
-If SkipRemoval = #False ; Если нужна переработка.
-Select \CellType ; Сначала убираем старое.
-Case #pVanilla : HideVisual(\Visuals(#AVanilla), *Cell\Gold) ; Скрываем.
-\CellType = #PB_Ignore : HandleConnections(XPos, YPos) ; Убиваем трубы.
-Case #pElevator  : HideEntity_(\Visuals(#AElevator))   ; Скрыть элеватор.
-Case #pIgnorance : HideEntity_(\Visuals(#AIgnorance))  ; Скрываем обелиск.
-EndSelect ; ...И последнее (убиваем позолоту):
+With *Cell ; ГЌГ Г·ГЁГ­Г ГҐГ¬ Г®ГЎГ°Г ГЎГ®ГІГЄГі ГЄГ«ГҐГІГЄГЁ...
+If SkipRemoval = #False ; Г…Г±Г«ГЁ Г­ГіГ¦Г­Г  ГЇГҐГ°ГҐГ°Г ГЎГ®ГІГЄГ .
+Select \CellType ; Г‘Г­Г Г·Г Г«Г  ГіГЎГЁГ°Г ГҐГ¬ Г±ГІГ Г°Г®ГҐ.
+Case #pVanilla : HideVisual(\Visuals(#AVanilla), *Cell\Gold) ; Г‘ГЄГ°Г»ГўГ ГҐГ¬.
+\CellType = #PB_Ignore : HandleConnections(XPos, YPos) ; Г“ГЎГЁГўГ ГҐГ¬ ГІГ°ГіГЎГ».
+Case #pElevator  : HideEntity_(\Visuals(#AElevator))   ; Г‘ГЄГ°Г»ГІГј ГЅГ«ГҐГўГ ГІГ®Г°.
+Case #pIgnorance : HideEntity_(\Visuals(#AIgnorance))  ; Г‘ГЄГ°Г»ГўГ ГҐГ¬ Г®ГЎГҐГ«ГЁГ±ГЄ.
+EndSelect ; ...Г€ ГЇГ®Г±Г«ГҐГ¤Г­ГҐГҐ (ГіГЎГЁГўГ ГҐГ¬ ГЇГ®Г§Г®Г«Г®ГІГі):
 If NewType = #pIgnorance Or \CellType = #pIgnorance : GoldInverse(#False, *Cell)
 \Gold = #False : \CellType = #PB_Ignore : HandleConnections(XPos, YPos) : EndIf
-\CellType = NewType ; Ставим новый тип.
-EndIf ; Продолжаем обработку:
-Select \CellType ; Устанавливаем графику по типу.
-Case #pVanilla  : ShowVisual(\Visuals(#AVanilla), *Cell\Gold) ; Скрываем.
-HandleConnections(XPos, YPos)                         ; Ставим трубы на место.
-Case #pElevator : ShowEntity_(\Visuals(#AElevator))   ; Показать элеватор.
-Case #pIgnorance : ShowEntity_(\Visuals(#AIgnorance)) ; Показать обелиск.
+\CellType = NewType ; Г‘ГІГ ГўГЁГ¬ Г­Г®ГўГ»Г© ГІГЁГЇ.
+EndIf ; ГЏГ°Г®Г¤Г®Г«Г¦Г ГҐГ¬ Г®ГЎГ°Г ГЎГ®ГІГЄГі:
+Select \CellType ; Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГЈГ°Г ГґГЁГЄГі ГЇГ® ГІГЁГЇГі.
+Case #pVanilla  : ShowVisual(\Visuals(#AVanilla), *Cell\Gold) ; Г‘ГЄГ°Г»ГўГ ГҐГ¬.
+HandleConnections(XPos, YPos)                         ; Г‘ГІГ ГўГЁГ¬ ГІГ°ГіГЎГ» Г­Г  Г¬ГҐГ±ГІГ®.
+Case #pElevator : ShowEntity_(\Visuals(#AElevator))   ; ГЏГ®ГЄГ Г§Г ГІГј ГЅГ«ГҐГўГ ГІГ®Г°.
+Case #pIgnorance : ShowEntity_(\Visuals(#AIgnorance)) ; ГЏГ®ГЄГ Г§Г ГІГј Г®ГЎГҐГ«ГЁГ±ГЄ.
 If SkipRemoval = #False : HandleConnections(XPos, YPos) : EndIf
-ChangePlatform(XPos, YPos, 0) ; На всякий пожарный заворачиваем в 0.
+ChangePlatform(XPos, YPos, 0) ; ГЌГ  ГўГ±ГїГЄГЁГ© ГЇГ®Г¦Г Г°Г­Г»Г© Г§Г ГўГ®Г°Г Г·ГЁГўГ ГҐГ¬ Гў 0.
 If \Being And \Being\Reincarnated : RemoveBeing(\Being) : EndIf
 EndSelect
 EndWith
 EndProcedure
 
 Macro CleanUP() ; Pesudo-procedure
-; Удаляем всю графику.
+; Г“Г¤Г Г«ГїГҐГ¬ ГўГ±Гѕ ГЈГ°Г ГґГЁГЄГі.
 ForEach System\Beings() : DestroyBeing() : Next : ToFix = System\Level\PlayersCount
 ForEach System\GUI\Matrix() : FreeEntity_(System\GUI\Matrix()) : Next
 For I = 1 To ToFix : FreeImage_(System\Players(I)\Counter)
 ClearStructure(@System\Players(I), Player) : Next I
-; Очищаем игровое поле.
+; ГЋГ·ГЁГ№Г ГҐГ¬ ГЁГЈГ°Г®ГўГ®ГҐ ГЇГ®Г«ГҐ.
 XEnd = System\Level\Width - 1 : YEnd = System\Level\Height - 1
 For X = 0 To XEnd : For Y = 0 To YEnd : FreeEntity_(GetParent_(Squares(X, Y)\Entity))
 ClearStructure(Squares(X, Y), Square) : Next Y : Next X
-; Последние приготовления.
+; ГЏГ®Г±Г«ГҐГ¤Г­ГЁГҐ ГЇГ°ГЁГЈГ®ГІГ®ГўГ«ГҐГ­ГЁГї.
 ClearStructure(@System\GUI, GUIData) : ClearStructure(@System\Level, LevelData)
-InitializeStructure(@System\GUI, GUIData) ; Дабы активировать списки.
+InitializeStructure(@System\GUI, GUIData) ; Г„Г ГЎГ» Г ГЄГІГЁГўГЁГ°Г®ГўГ ГІГј Г±ГЇГЁГ±ГЄГЁ.
 EndMacro
 
 Procedure OpenOptionsFile()
@@ -1475,8 +1475,8 @@ EndMacro
 Procedure FindColors(*Team.Team, TeamIdx)
 Define I, Pixel.l, NewPixel.l, *Buffer, Factor
 *Buffer = ImageBuffer_(System\Mixer, 0)
-SetBuffer_(*Buffer) ; Установка буффера.
-With *Team ; Обработка комманды
+SetBuffer_(*Buffer) ; Г“Г±ГІГ Г­Г®ГўГЄГ  ГЎГіГґГґГҐГ°Г .
+With *Team ; ГЋГЎГ°Г ГЎГ®ГІГЄГ  ГЄГ®Г¬Г¬Г Г­Г¤Г»
 For I = 1 To System\Level\PlayersCount
 If System\Players(I)\AlliedTeam = TeamIdx 
 Player2Color(I) : Plot_(0, 0) : NewPixel = ReadPixel_(0, 0, *Buffer)
@@ -1492,18 +1492,18 @@ EndProcedure
 
 Macro UpdatePlayers() ; Partializer
 FillMemory(@System\Teams(1), #MaxPlayers * SizeOf(Team))
-For I = 1 To Params\PlayersCount ; Проходим по игрокам...
+For I = 1 To Params\PlayersCount ; ГЏГ°Г®ГµГ®Г¤ГЁГ¬ ГЇГ® ГЁГЈГ°Г®ГЄГ Г¬...
 Define *Player.Player = System\Players(I)
-If I > 1 ; Задать тип управления игроком.
+If I > 1 ; Г‡Г Г¤Г ГІГј ГІГЁГЇ ГіГЇГ°Г ГўГ«ГҐГ­ГЁГї ГЁГЈГ°Г®ГЄГ®Г¬.
 *Player\IType = Params\ITypes[I - 2]
 Else : *Player\IType = #IHuman
 EndIf
 *Player\AlliedTeam = Params\Teams[I-1]
 System\Teams(*Player\AlliedTeam)\PlayersCount + 1
 Next I
-; Теперь комманды...
+; Г’ГҐГЇГҐГ°Гј ГЄГ®Г¬Г¬Г Г­Г¤Г»...
 System\Level\TeamsCount = 0
-For I = 1 To #MaxPlayers ; Проходим по игрокам...
+For I = 1 To #MaxPlayers ; ГЏГ°Г®ГµГ®Г¤ГЁГ¬ ГЇГ® ГЁГЈГ°Г®ГЄГ Г¬...
 If System\Teams(I)\PlayersCount : System\Level\TeamsCount + 1 : FindColors(System\Teams(I), I) : EndIf
 Next I
 EndMacro
@@ -1512,22 +1512,22 @@ Macro LoadingErr(Text) ; Pseudo-procedure.
 ErrorBox(Text, "Map loading error:")
 EndMacro
 
-Procedure LoadMap(FName.S = #NewMap) ; Доделать !
+Procedure LoadMap(FName.S = #NewMap) ; Г„Г®Г¤ГҐГ«Г ГІГј !
 With System
 Define X, Y, Code.s, XEnd, YEnd, *Platform, *Elevator, Type, Scale, *Square, *Player.Player, Random
 Define Header.S = Space(Len(#MapHeader)), EHeader.S = #MapHeader, I, ToFix
 Define Params.MapParams
-If FName = #NewMap ; Определение типа загрузки.
-ShowPointer_() ; Временно показать курсор мыши.
-X = MGRequester(Params, \Options) ; Получение данных от пользователя.
+If FName = #NewMap ; ГЋГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ ГІГЁГЇГ  Г§Г ГЈГ°ГіГ§ГЄГЁ.
+ShowPointer_() ; Г‚Г°ГҐГ¬ГҐГ­Г­Г® ГЇГ®ГЄГ Г§Г ГІГј ГЄГіГ°Г±Г®Г° Г¬Г»ГёГЁ.
+X = MGRequester(Params, \Options) ; ГЏГ®Г«ГіГ·ГҐГ­ГЁГҐ Г¤Г Г­Г­Г»Гµ Г®ГІ ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гї.
 PerformOptions()
-HidePointer_() ; Скрыть курсор мыши.
+HidePointer_() ; Г‘ГЄГ°Г»ГІГј ГЄГіГ°Г±Г®Г° Г¬Г»ГёГЁ.
 Select X
 Case #True : Random = #True
-Case #False : Quit() ; Сразу выходим. Да, тут.
+Case #False : Quit() ; Г‘Г°Г Г§Гі ГўГ»ГµГ®Г¤ГЁГ¬. Г„Г , ГІГіГІ.
 Case 2 : ProcedureReturn #True
 EndSelect
-Else ; Загрузка из файла.
+Else ; Г‡Г ГЈГ°ГіГ§ГЄГ  ГЁГ§ ГґГ Г©Г«Г .
 If OpenFile(0, FName.S)
 ReadData(0, @Header, Len(#MapHeader))
 If CompareMemory(@Header, @EHeader, Len(Header)) = #False
@@ -1538,36 +1538,36 @@ EndIf
 Else : LoadingErr("can't open '" + FName + "' !")
 ProcedureReturn #False
 EndIf
-If ReadLong(0) = #False ; Не грузим сохраненные игры.
+If ReadLong(0) = #False ; ГЌГҐ ГЈГ°ГіГ§ГЁГ¬ Г±Г®ГµГ°Г Г­ГҐГ­Г­Г»ГҐ ГЁГЈГ°Г».
 LoadingErr("can't load game saves !")
 CloseFile(0) : ProcedureReturn #False
-EndIf ; Теперь проверяем защитный код:
+EndIf ; Г’ГҐГЇГҐГ°Гј ГЇГ°Г®ГўГҐГ°ГїГҐГ¬ Г§Г Г№ГЁГІГ­Г»Г© ГЄГ®Г¤:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-I = ReadLong(0) : If I : Code = Space(I) : ReadData(0, @Code, I) ; Читаем защитный код...
-Code = InvalidatePass(Code) ; Сразу же, на всякий пожарный.
+I = ReadLong(0) : If I : Code = Space(I) : ReadData(0, @Code, I) ; Г—ГЁГІГ ГҐГ¬ Г§Г Г№ГЁГІГ­Г»Г© ГЄГ®Г¤...
+Code = InvalidatePass(Code) ; Г‘Г°Г Г§Гі Г¦ГҐ, Г­Г  ГўГ±ГїГЄГЁГ© ГЇГ®Г¦Г Г°Г­Г»Г©.
 Select CodeRequester("", #UnlockMsg)
-Case "" : CloseFile(0) : ProcedureReturn #False ; Мирно выходим.
-Case Code ; Nop. Продолжаем загрузку.
-Default ; Неправильный пароль...
+Case "" : CloseFile(0) : ProcedureReturn #False ; ГЊГЁГ°Г­Г® ГўГ»ГµГ®Г¤ГЁГ¬.
+Case Code ; Nop. ГЏГ°Г®Г¤Г®Г«Г¦Г ГҐГ¬ Г§Г ГЈГ°ГіГ§ГЄГі.
+Default ; ГЌГҐГЇГ°Г ГўГЁГ«ГјГ­Г»Г© ГЇГ Г°Г®Г«Гј...
 LoadingErr("incorrect code - loading aborted !")
 CloseFile(0) : ProcedureReturn #False
-EndSelect : \LockCode = Code ; ЗАпоминаем код.
-EndIf : I = ReadLong(0) : If I : Code = Space(I) : ReadData(0, @Code, I) ; Читаем игровой код...
-\PlayCode = InvalidatePass(Code) ; Игровой код.
-EndIf ; Показать предупреждение о несохраненных изменениях:
+EndSelect : \LockCode = Code ; Г‡ГЂГЇГ®Г¬ГЁГ­Г ГҐГ¬ ГЄГ®Г¤.
+EndIf : I = ReadLong(0) : If I : Code = Space(I) : ReadData(0, @Code, I) ; Г—ГЁГІГ ГҐГ¬ ГЁГЈГ°Г®ГўГ®Г© ГЄГ®Г¤...
+\PlayCode = InvalidatePass(Code) ; Г€ГЈГ°Г®ГўГ®Г© ГЄГ®Г¤.
+EndIf ; ГЏГ®ГЄГ Г§Г ГІГј ГЇГ°ГҐГ¤ГіГЇГ°ГҐГ¦Г¤ГҐГ­ГЁГҐ Г® Г­ГҐГ±Г®ГµГ°Г Г­ГҐГ­Г­Г»Гµ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГїГµ:
 If ShowResetWarning() : ProcedureReturn #False : EndIf
 EndIf 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Clean-Up
 CleanUp() : \GUI\LockSetChanged = #True
-; Начинаем генерацию.
-If Random ; Если идет слечайный порядок...
-ConsumeParams() ; анализируем данные.
-Else : ReadData(0, @\Level, SizeOf(LevelData))     ; Загрузить размер поля из файла.
-I = ReadLong(0) : \Story = Space(I) : ReadData(0, @\Story, I)           ; Загрузить брифинг.
-I = ReadLong(0) : \AfterStory = Space(I) : ReadData(0, @\AfterStory, I) ; Загрузить эпилог.
+; ГЌГ Г·ГЁГ­Г ГҐГ¬ ГЈГҐГ­ГҐГ°Г Г¶ГЁГѕ.
+If Random ; Г…Г±Г«ГЁ ГЁГ¤ГҐГІ Г±Г«ГҐГ·Г Г©Г­Г»Г© ГЇГ®Г°ГїГ¤Г®ГЄ...
+ConsumeParams() ; Г Г­Г Г«ГЁГ§ГЁГ°ГіГҐГ¬ Г¤Г Г­Г­Г»ГҐ.
+Else : ReadData(0, @\Level, SizeOf(LevelData))     ; Г‡Г ГЈГ°ГіГ§ГЁГІГј Г°Г Г§Г¬ГҐГ° ГЇГ®Г«Гї ГЁГ§ ГґГ Г©Г«Г .
+I = ReadLong(0) : \Story = Space(I) : ReadData(0, @\Story, I)           ; Г‡Г ГЈГ°ГіГ§ГЁГІГј ГЎГ°ГЁГґГЁГ­ГЈ.
+I = ReadLong(0) : \AfterStory = Space(I) : ReadData(0, @\AfterStory, I) ; Г‡Г ГЈГ°ГіГ§ГЁГІГј ГЅГЇГЁГ«Г®ГЈ.
 EndIf
-; Настроить мини-карту.
+; ГЌГ Г±ГІГ°Г®ГЁГІГј Г¬ГЁГ­ГЁ-ГЄГ Г°ГІГі.
 ReSizeImage_(\MiniMap, #MMCellSize * \Level\Width + 2, #MMCellSize * \Level\Height + 2)
 SetBuffer_(ImageBuffer_(\MiniMap, 0))
 ClsColor_(10, 10, 10) : Cls_()
@@ -1577,7 +1577,7 @@ SetBuffer_(BackBuffer_())
 \GUI\MiniMapHeight = ImageHeight_(\MiniMap)
 \GUI\MiniMapCursorPos\X = 1 + \GUI\MiniMapXPos
 \GUI\MiniMapCursorPos\Y = 1 + #MMOffset
-; -Настроить таблицу данных-
+; -ГЌГ Г±ГІГ°Г®ГЁГІГј ГІГ ГЎГ«ГЁГ¶Гі Г¤Г Г­Г­Г»Гµ-
 \GUI\DataBoardYPos = #ScreenHeight - ImageHeight_(\DataBoard) - #DataBoardYOffset
 \GUI\DataBoardXCenter = #DataBoardXOffset + ImageWidth_(\DataBoard) / 2
 ; --Floor creation--
@@ -1588,9 +1588,9 @@ Define *Cell.Square = Squares(X, Y)
 ; -Platform creation-
 If Type : *Platform = \PlatformRed : *Elevator = \ElevatorRed
 Else    : *Platform = \PlatformGreen : *Elevator = \ElevatorGreen : EndIf
-*Platform = CopyEntity_(*Platform) ; Создаем платформу и основу на будущее.
-If Random : Scale = 1 ; Если случайная генерация.
-Else ; Считать высоту из файла
+*Platform = CopyEntity_(*Platform) ; Г‘Г®Г§Г¤Г ГҐГ¬ ГЇГ«Г ГІГґГ®Г°Г¬Гі ГЁ Г®Г±Г­Г®ГўГі Г­Г  ГЎГіГ¤ГіГ№ГҐГҐ.
+If Random : Scale = 1 ; Г…Г±Г«ГЁ Г±Г«ГіГ·Г Г©Г­Г Гї ГЈГҐГ­ГҐГ°Г Г¶ГЁГї.
+Else ; Г‘Г·ГЁГІГ ГІГј ГўГ»Г±Г®ГІГі ГЁГ§ ГґГ Г©Г«Г 
 ReadData(0, *Cell, SizeOf(Square))
 PokeI(*Cell + OffsetOf(Square\Visuals), 0)
 Scale = *Cell\Height
@@ -1608,53 +1608,53 @@ If Random
 *Cell\CellType   = #pVanilla
 *Cell\OwnData    = #Null
 EndIf 
-InitializeStructure(*Cell, Square) ; Ре-инициализация.
-*Cell\Visuals(#AVanilla)     = *Platform ; Вписка платформы.
-*Cell\Visuals(#AVanillaPure) = *Platform ; Вписка платформы.
-; Настройка альтернатив.
+InitializeStructure(*Cell, Square) ; ГђГҐ-ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї.
+*Cell\Visuals(#AVanilla)     = *Platform ; Г‚ГЇГЁГ±ГЄГ  ГЇГ«Г ГІГґГ®Г°Г¬Г».
+*Cell\Visuals(#AVanillaPure) = *Platform ; Г‚ГЇГЁГ±ГЄГ  ГЇГ«Г ГІГґГ®Г°Г¬Г».
+; ГЌГ Г±ГІГ°Г®Г©ГЄГ  Г Г«ГјГІГҐГ°Г­Г ГІГЁГў.
 Define *Ignorance = CopyEntity_(\Ignorance, *Square) : HideEntity_(*Ignorance)
 TranslateEntity_(*Ignorance, 0, #Ignoring, 0) : HideEntity_(*Elevator)
-TranslateEntity_(*Elevator, 0, -#HalfCell - #SquareLuft, 0) ; Небольшое смещение.
-CopyEntity_(\NodeCubes, *Elevator) : *Cell\Visuals(#AIgnorance)    = *Ignorance ; Обелиск.
-*Cell\Visuals(#AElevator) = *Elevator    : *Cell\Visuals(#AElevatorPure) = *Elevator  ; Элеватор.
-Define *Gold = CopyEntity_(\PlatformGold, *Platform) ; Создание золотой платформы.
-*Cell\Visuals(#AVanillaGold) = *Gold : HideEntity_(*Gold)  ; Вписка золотой платформы.
+TranslateEntity_(*Elevator, 0, -#HalfCell - #SquareLuft, 0) ; ГЌГҐГЎГ®Г«ГјГёГ®ГҐ Г±Г¬ГҐГ№ГҐГ­ГЁГҐ.
+CopyEntity_(\NodeCubes, *Elevator) : *Cell\Visuals(#AIgnorance)    = *Ignorance ; ГЋГЎГҐГ«ГЁГ±ГЄ.
+*Cell\Visuals(#AElevator) = *Elevator    : *Cell\Visuals(#AElevatorPure) = *Elevator  ; ГќГ«ГҐГўГ ГІГ®Г°.
+Define *Gold = CopyEntity_(\PlatformGold, *Platform) ; Г‘Г®Г§Г¤Г Г­ГЁГҐ Г§Г®Г«Г®ГІГ®Г© ГЇГ«Г ГІГґГ®Г°Г¬Г».
+*Cell\Visuals(#AVanillaGold) = *Gold : HideEntity_(*Gold)  ; Г‚ГЇГЁГ±ГЄГ  Г§Г®Г«Г®ГІГ®Г© ГЇГ«Г ГІГґГ®Г°Г¬Г».
 *Gold = CopyEntity_(\ElevatorGold, *Square) : CopyEntity_(\NodeCubesGold, *Gold) 
-SetOn(*Gold, *Elevator) : *Cell\Visuals(#AElevatorGold) = *Gold : HideEntity_(*Gold) ; Вписка золота.
-; Установка размера платформы:
+SetOn(*Gold, *Elevator) : *Cell\Visuals(#AElevatorGold) = *Gold : HideEntity_(*Gold) ; Г‚ГЇГЁГ±ГЄГ  Г§Г®Г«Г®ГІГ .
+; Г“Г±ГІГ Г­Г®ГўГЄГ  Г°Г Г§Г¬ГҐГ°Г  ГЇГ«Г ГІГґГ®Г°Г¬Г»:
 *Cell\TubesPiv = CreatePivot_(*Platform)
-Define Gold = *Cell\Gold : *Cell\Gold = #False ; Сохраняем на будущее.
-If *Cell\CellType : EntityAlpha_(*Platform, 0) ; Сразу скрываем.
-RestructureCell(X, Y, *Cell\CellType, #True)   ; Реструктуризуем.
-EndIf : ChangePlatform(X, Y, Gold, Scale) ; Ремасштабируем.
-; Матрица.
+Define Gold = *Cell\Gold : *Cell\Gold = #False ; Г‘Г®ГµГ°Г Г­ГїГҐГ¬ Г­Г  ГЎГіГ¤ГіГ№ГҐГҐ.
+If *Cell\CellType : EntityAlpha_(*Platform, 0) ; Г‘Г°Г Г§Гі Г±ГЄГ°Г»ГўГ ГҐГ¬.
+RestructureCell(X, Y, *Cell\CellType, #True)   ; ГђГҐГ±ГІГ°ГіГЄГІГіГ°ГЁГ§ГіГҐГ¬.
+EndIf : ChangePlatform(X, Y, Gold, Scale) ; ГђГҐГ¬Г Г±ГёГІГ ГЎГЁГ°ГіГҐГ¬.
+; ГЊГ ГІГ°ГЁГ¶Г .
 If Y = 0 : MatrixTubes(X, Y, -90) : EndIf
 If X = 0 : MatrixTubes(X, Y, 0)   : EndIf
-Type = ~Type ; Красно-зеленное.
+Type = ~Type ; ГЉГ°Г Г±Г­Г®-Г§ГҐГ«ГҐГ­Г­Г®ГҐ.
 Next X
 If \Level\Width % 2 = 0 : Type = ~Type : EndIf
 Next Y
 ; --Players setup--
-If Random ; Если создаем новую карту...
-; Создать заданных пользователем игроков.
+If Random ; Г…Г±Г«ГЁ Г±Г®Г§Г¤Г ГҐГ¬ Г­Г®ГўГіГѕ ГЄГ Г°ГІГі...
+; Г‘Г®Г§Г¤Г ГІГј Г§Г Г¤Г Г­Г­Г»Гµ ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ¬ ГЁГЈГ°Г®ГЄГ®Гў.
 ReDim \Players.Player(Params\PlayersCount)
 \Level\PlayersCount = Params\PlayersCount
-UpdatePlayers() ; Правим данные игроков.
-Else ; Загрузить данные о игроках из файла.
-ToFix = ReadLong(0) ; Кол-во игроков.
+UpdatePlayers() ; ГЏГ°Г ГўГЁГ¬ Г¤Г Г­Г­Г»ГҐ ГЁГЈГ°Г®ГЄГ®Гў.
+Else ; Г‡Г ГЈГ°ГіГ§ГЁГІГј Г¤Г Г­Г­Г»ГҐ Г® ГЁГЈГ°Г®ГЄГ Гµ ГЁГ§ ГґГ Г©Г«Г .
+ToFix = ReadLong(0) ; ГЉГ®Г«-ГўГ® ГЁГЈГ°Г®ГЄГ®Гў.
 ReDim \Players.Player(ToFix)
-For I = 1 To ToFix ; Обрабатываем каждого.
+For I = 1 To ToFix ; ГЋГЎГ°Г ГЎГ ГІГ»ГўГ ГҐГ¬ ГЄГ Г¦Г¤Г®ГЈГ®.
 ReadData(0, \Players(I), SizeOf(Player))
 \Players(I)\BeingsCount = 0
 \Players(I)\TotalEnergy = 0
-Next I ; Загрузить данные о коммандах...
-ToFix = ReadLong(0) ; Количество комманд.
-For I = 1 To ToFix ; Обрабатываем каждую.
+Next I ; Г‡Г ГЈГ°ГіГ§ГЁГІГј Г¤Г Г­Г­Г»ГҐ Г® ГЄГ®Г¬Г¬Г Г­Г¤Г Гµ...
+ToFix = ReadLong(0) ; ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ®Г¬Г¬Г Г­Г¤.
+For I = 1 To ToFix ; ГЋГЎГ°Г ГЎГ ГІГ»ГўГ ГҐГ¬ ГЄГ Г¦Г¤ГіГѕ.
 ReadData(0, \Teams(I), SizeOf(Team))
 Next I
 EndIf
 #CountersInter = 4
-; --Настроить счетчики Сущностей--
+; --ГЌГ Г±ГІГ°Г®ГЁГІГј Г±Г·ГҐГІГ·ГЁГЄГЁ Г‘ГіГ№Г­Г®Г±ГІГҐГ©--
 ToFix = \Level\PlayersCount
 X = ImageHeight_(\CountersTitle) + 7
 Y = (#ScreenHeight - ((\CountersData\Top + #CountersInter) * ToFix - #CountersInter + X)) / 2
@@ -1674,7 +1674,7 @@ YEnd = \Level\Height * #FullGap - #CellGap ; Real map height.
 PositionEntity_(\Sky, XEnd / 2, 0, -YEnd / 2)
 PositionEntity_(\Space, XEnd / 2, 0, -YEnd / 2)
 ; -Beings-
-If Random = #False ; Загрузка данных о Сущностях из файла
+If Random = #False ; Г‡Г ГЈГ°ГіГ§ГЄГ  Г¤Г Г­Г­Г»Гµ Г® Г‘ГіГ№Г­Г®Г±ГІГїГµ ГЁГ§ ГґГ Г©Г«Г 
 Define *Ptr, Being.Being, *CreatedBeing.Being
 ToFix = ReadLong(0)
 For I = 1 To ToFix
@@ -1689,13 +1689,13 @@ ScriptTable(*CreatedBeing)
 RotateEntity_(*CreatedBeing\Entity, 0, 0, 0)
 TurnBeing(*CreatedBeing, Being\EntityYaw)
 Next I
-; Загрузка данных о квантах из файла (Dummy).
+; Г‡Г ГЈГ°ГіГ§ГЄГ  Г¤Г Г­Г­Г»Гµ Г® ГЄГўГ Г­ГІГ Гµ ГЁГ§ ГґГ Г©Г«Г  (Dummy).
 ReadLong(0)
 EndIf
-If Random ; Настраиваем камеру.
+If Random ; ГЌГ Г±ГІГ°Г ГЁГўГ ГҐГ¬ ГЄГ Г¬ГҐГ°Гі.
 PositionEntity_(\CamPiv, #MapBoundsGap, 0, -#MapBoundsGap)
 RotateEntity_(\CamPiv, 0, 45, 0)  ; Iso-view.
-SetOn(\Camera, \CamPiv)     ; Ставим в начало.
+SetOn(\Camera, \CamPiv)     ; Г‘ГІГ ГўГЁГ¬ Гў Г­Г Г·Г Г«Г®.
 MoveEntity_(\Camera, 0, 0, -25-#MinCameraDistance) ; Better view.
 SetOn(\Selection, Squares(0, 0)\Entity)
 \Level\CurrentPlayer = 0
@@ -1703,16 +1703,16 @@ Else : PositionEntity_(\CamPiv, ReadLong(0), 0, ReadLong(0))
 RotateEntity_(\CamPiv, 0, ReadLong(0), 0)
 MoveEntity_(\Camera, 0, 0, EntityDistance_(\Camera, \CamPiv) - ReadLong(0))
 PositionEntity_(\Selection, ReadLong(0), ReadLong(0), ReadLong(0))
-; Загрузить данные матрицы из файла.
-ForEach \GUI\Matrix() : *Ptr = \GUI\Matrix() ; Корректируем смещения.
-PositionEntity_(*Ptr, ReadLong(0), EntityY_(*Ptr), ReadLong(0))       ; Пространство.
-RotateEntity_(*Ptr, ReadLong(0), EntityYaw_(*Ptr), EntityRoll_(*Ptr)) ; Углы.
+; Г‡Г ГЈГ°ГіГ§ГЁГІГј Г¤Г Г­Г­Г»ГҐ Г¬Г ГІГ°ГЁГ¶Г» ГЁГ§ ГґГ Г©Г«Г .
+ForEach \GUI\Matrix() : *Ptr = \GUI\Matrix() ; ГЉГ®Г°Г°ГҐГЄГІГЁГ°ГіГҐГ¬ Г±Г¬ГҐГ№ГҐГ­ГЁГї.
+PositionEntity_(*Ptr, ReadLong(0), EntityY_(*Ptr), ReadLong(0))       ; ГЏГ°Г®Г±ГІГ°Г Г­Г±ГІГўГ®.
+RotateEntity_(*Ptr, ReadLong(0), EntityYaw_(*Ptr), EntityRoll_(*Ptr)) ; Г“ГЈГ«Г».
 Next
-; Загрузка данных о каналах из файла (Dummy).
+; Г‡Г ГЈГ°ГіГ§ГЄГ  Г¤Г Г­Г­Г»Гµ Г® ГЄГ Г­Г Г«Г Гµ ГЁГ§ ГґГ Г©Г«Г  (Dummy).
 ReadLong(0)
-; Загрузка данных о эффектах перерождения из файла (Dummy).
+; Г‡Г ГЈГ°ГіГ§ГЄГ  Г¤Г Г­Г­Г»Гµ Г® ГЅГґГґГҐГЄГІГ Гµ ГЇГҐГ°ГҐГ°Г®Г¦Г¤ГҐГ­ГЁГї ГЁГ§ ГґГ Г©Г«Г  (Dummy).
 ReadLong(0)
-; Загрузка данных о искрах из файла (Dummy).
+; Г‡Г ГЈГ°ГіГ§ГЄГ  Г¤Г Г­Г­Г»Гµ Г® ГЁГ±ГЄГ°Г Гµ ГЁГ§ ГґГ Г©Г«Г  (Dummy).
 ReadLong(0)
 ReadLong(0)
 CloseFile(0)
@@ -1731,10 +1731,10 @@ AssembleTitle(\GUI\MapFName)
 For I = 1 To \Level\PlayersCount
 ScriptCounter(I)
 Next I
-; -Настроить размытие-
+; -ГЌГ Г±ГІГ°Г®ГЁГІГј Г°Г Г§Г¬Г»ГІГЁГҐ-
 EntityAlpha_(\Blurer, 0.35) : EntityTexture_(\Blurer, \BlurTex)
 EntityFX_(\Blurer, 1) : If \Options\BlurFilter : ShowEntity_(\Blurer) : EndIf
-; -Немного шума для красоты-
+; -ГЌГҐГ¬Г­Г®ГЈГ® ГёГіГ¬Г  Г¤Г«Гї ГЄГ°Г Г±Г®ГІГ»-
 \GUI\Noised = 5
 ProcedureReturn #True
 EndWith
@@ -1829,7 +1829,7 @@ Define NewType
 If Switcher : NewType = Get#Infix1#Type(*Being\Type)
 Else : NewType = Get#Infix2#Type(*Being\Type)
 EndIf
-If NewType <> *Being\Type ; Если Сущность можно реинкарнировать...
+If NewType <> *Being\Type ; Г…Г±Г«ГЁ Г‘ГіГ№Г­Г®Г±ГІГј Г¬Г®Г¦Г­Г® Г°ГҐГЁГ­ГЄГ Г°Г­ГЁГ°Г®ГўГ ГІГј...
 ExcludeBeing(*Being)
 CreateBeing(*Being\Square, NewType, *Being\Owner)
 EndIf
@@ -1963,7 +1963,7 @@ EndIf
 EndIf
 EndMacro
 
-Procedure CheckMiniMap() ; Доделать.
+Procedure CheckMiniMap() ; Г„Г®Г¤ГҐГ«Г ГІГј.
 If System\Options\DisplayMiniMap
 Define X, Y : X = System\GUI\MiniMapXPos + 1 : Y = #MMOffset + 1
 Define XEnd : XEnd = X + System\GUI\MiniMapWidth - 3
@@ -2004,9 +2004,9 @@ Text_(10, 20, "Tri's rendered: " + Str(TrisRendered_()))
 Text_(10, 30, "Used player: " + Str(System\GUI\SelectedPlayer))
 Text_(10, 40, "InsertionBeing: " + BeingType2Name(System\GUI\InsertionBeing))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-If System\GUI\PickedSquare : *Being = System\GUI\PickedSquare\Being ; Если выделена платформа...
-If CheckBeing(*Being) ; Если на ней есть Сущность...
-; Отображение таблицы.
+If System\GUI\PickedSquare : *Being = System\GUI\PickedSquare\Being ; Г…Г±Г«ГЁ ГўГ»Г¤ГҐГ«ГҐГ­Г  ГЇГ«Г ГІГґГ®Г°Г¬Г ...
+If CheckBeing(*Being) ; Г…Г±Г«ГЁ Г­Г  Г­ГҐГ© ГҐГ±ГІГј Г‘ГіГ№Г­Г®Г±ГІГј...
+; ГЋГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГҐ ГІГ ГЎГ«ГЁГ¶Г».
 DrawImage_(*Being\DataBoard, #DataBoardXOffset, System\GUI\DataBoardYPos)
 EndIf
 EndIf
@@ -2026,15 +2026,15 @@ If LineUp(*Plr\AlliedTeam)\X = 0
 If I => ToFix - 1 : ToX = #LAOffset : EndIf
 Line_(#LSOffset, Y - 1, ToX, Y - 1)
 Line_(#LSOffset, Y + 1, ToX - #LineFactor, Y + 1)
-LineUp(*Plr\AlliedTeam)\Y = ToX ; Запоминаеми
-ToX + #CountersOffset           ; Сдвигаем.
+LineUp(*Plr\AlliedTeam)\Y = ToX ; Г‡Г ГЇГ®Г¬ГЁГ­Г ГҐГ¬ГЁ
+ToX + #CountersOffset           ; Г‘Г¤ГўГЁГЈГ ГҐГ¬.
 Else : OldToX = LineUp(*Plr\AlliedTeam)\Y
 FromY = System\Players(LineUp(*Plr\AlliedTeam)\X)\CounterPos\Y + #VertOffset
 Line_(OldToX, FromY, OldToX, Y + 1) : Line_(OldToX - #LineFactor, FromY + #LineFactor, OldToX - #LineFactor, Y - 1)
 Line_(#LSOffset, Y - 1, OldToX - #LineFactor, Y - 1)
 Line_(#LSOffset, Y + 1, OldToX - #LineFactor, Y + 1)
 EndIf
-LineUp(*Plr\AlliedTeam)\X = I ; В любом случае отмечаем последнее.
+LineUp(*Plr\AlliedTeam)\X = I ; Г‚ Г«ГѕГЎГ®Г¬ Г±Г«ГіГ·Г ГҐ Г®ГІГ¬ГҐГ·Г ГҐГ¬ ГЇГ®Г±Г«ГҐГ¤Г­ГҐГҐ.
 EndIf 
 ; -Draw counter-
 DrawImage_(*Plr\Counter, #CountersOffset, *Plr\CounterPos\Y)
@@ -2070,7 +2070,7 @@ If System\GUI\Exit : QuitDialog() : System\GUI\Exit = #False : EndIf
 EndMacro
 
 Macro ShowNothing() ; Partializer.
-ClsColor_(0, 0, 0) : Cls_() ; Сразу очищаем экран и показываем:
+ClsColor_(0, 0, 0) : Cls_() ; Г‘Г°Г Г§Гі Г®Г·ГЁГ№Г ГҐГ¬ ГЅГЄГ°Г Г­ ГЁ ГЇГ®ГЄГ Г§Г»ГўГ ГҐГ¬:
 DrawImage_(System\NothingText, #ScreenWidth / 2, #ScreenHeight / 2 - 200)
 DrawImage_(System\VoidEye, #ScreenWidth / 2, #ScreenHeight / 2) 
 DrawImage_(System\InsideText, #ScreenWidth / 2, #ScreenHeight / 2  + 200)
@@ -2083,16 +2083,16 @@ EndMacro
 ;}
 ;{ --Paralleling--
 Procedure GameCB(*Window, Event.i, lParam.i, wParam.i) ; Callback.
-Select Event ; Анализируем событие...
+Select Event ; ГЂГ­Г Г«ГЁГ§ГЁГ°ГіГҐГ¬ Г±Г®ГЎГ»ГІГЁГҐ...
 Case #WM_SETFOCUS, #WM_KILLFOCUS : MouseZSpeed_()
-Case #WM_CLOSE : System\GUI\Exit = #True : ProcedureReturn ; Выход без обработки.
+Case #WM_CLOSE : System\GUI\Exit = #True : ProcedureReturn ; Г‚Г»ГµГ®Г¤ ГЎГҐГ§ Г®ГЎГ°Г ГЎГ®ГІГЄГЁ.
 EndSelect
 ProcedureReturn CallWindowProc_(System\OldCallBack, *Window, Event, lParam, wParam.i)
 EndProcedure
 
 Procedure ErrorHandler() ; Last resort.
 Define Diagnose.s
-Select ErrorCode() ; Определяем причину.
+Select ErrorCode() ; ГЋГЇГ°ГҐГ¤ГҐГ«ГїГҐГ¬ ГЇГ°ГЁГ·ГЁГ­Гі.
 Case #PB_OnError_InvalidMemory          : Diagnose = "invalid memory access at $"+Hex(ErrorTargetAddress())+" !"
 Case #PB_OnError_Floatingpoint          : Diagnose = "floating point error !"
 Case #PB_OnError_Breakpoint             : Diagnose = "unknown debugger's breakpoint reached !"
@@ -2108,11 +2108,11 @@ EndProcedure
 Macro Initialization()
 Define I, *Texture
 ; -System init-
-While CreateMutex_(0, 0, "=[Flow.Editor]=") = #Null : Delay(100) : Wend ; Идентификатор.
+While CreateMutex_(0, 0, "=[Flow.Editor]=") = #Null : Delay(100) : Wend ; Г€Г¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г°.
 If GetLastError_() : ErrorBox("Flow map editor is already running !" + #CR$ + "Press 'OK' to exit.") : End : EndIf
 CompilerIf Not #PB_Compiler_Debugger : OnErrorCall(@ErrorHandler())
 CompilerEndIf
-Define FixDir.s = GetPathPart(ProgramFilename()) ; На случай cmd и тому подобного.
+Define FixDir.s = GetPathPart(ProgramFilename()) ; ГЌГ  Г±Г«ГіГ·Г Г© cmd ГЁ ГІГ®Г¬Гі ГЇГ®Г¤Г®ГЎГ­Г®ГЈГ®.
 If FixDir <> GetTemporaryDirectory() : SetCurrentDirectory(FixDir) : EndIf
 ; -Blitz init-
 BeginBlitz3D_() : SetBlitz3DDebugMode_(0)
@@ -2167,12 +2167,12 @@ EntityTexture_(System\ElevatorGreen, System\CellGreenTex)
 EntityTexture_(System\ElevatorRed, System\CellRedTex)
 EntityTexture_(System\ElevatorGold, System\CellGoldTex)
 ; -Node cubes-
-System\NodeCubes = CreatePivot_() ; Изначальное крепление.
+System\NodeCubes = CreatePivot_() ; Г€Г§Г­Г Г·Г Г«ГјГ­Г®ГҐ ГЄГ°ГҐГЇГ«ГҐГ­ГЁГҐ.
 For I = 1 To #MatrixDepth : *Texture = CopyEntity_(System\ElevatorRed, System\NodeCubes)
 ScaleEntity_(*Texture, 0.5, 0.5, 0.5) : EntityTexture_(*Texture, System\PlatformEdgesTex[0])
 TranslateEntity_(*Texture, 0, -#CellSize * I, 0) : Next I : HideEntity_(System\NodeCubes)
 System\NodeCubesGold = CopyEntity_(System\NodeCubes) : HideEntity_(System\NodeCubesGold)
-ComplexEntityTexture(System\NodeCubesGold, System\PlatformEdgesTex[2]) ; Тоже текстурируем.
+ComplexEntityTexture(System\NodeCubesGold, System\PlatformEdgesTex[2]) ; Г’Г®Г¦ГҐ ГІГҐГЄГ±ГІГіГ°ГЁГ°ГіГҐГ¬.
 ; -Relative resizing-
 ScaleMesh_(System\PlatformRed, 1, #TallInfinity, 1)   : PrepareObstacle(System\PlatformRed)
 ScaleMesh_(System\PlatformGreen, 1, #TallInfinity, 1) : PrepareObstacle(System\PlatformGreen)
@@ -2237,7 +2237,7 @@ System\FrostBiteMesh = LoadAnimEtalone("FrostBite.B3D")
 ; .Seer.
 System\SeerMesh = LoadAnimEtalone("Seer.B3D")
 EntityBlend_(FindChildSafe(System\SeerMesh, "SubBody"), 3)
-For I = 1 To 4 ; Еще немного альфы.
+For I = 1 To 4 ; Г…Г№ГҐ Г­ГҐГ¬Г­Г®ГЈГ® Г Г«ГјГґГ».
 EntityBlend_(FindChildSafe(System\SeerMesh, "Window" + Str(I)), 3)
 Next I
 ; .Paradigma.
@@ -2292,7 +2292,7 @@ System\BlurTex = ScreenTexture(256) : System\Blurer = ScreenSprite(1, -10000) ; 
 ; --Synchronizer--
 System\SyncTimer = CreateTimer_(#MaxFPS)
 ; --Options--
-If OpenOptionsFile() = #False ; Если не удалось загрузить настроек...
+If OpenOptionsFile() = #False ; Г…Г±Г«ГЁ Г­ГҐ ГіГ¤Г Г«Г®Г±Гј Г§Г ГЈГ°ГіГ§ГЁГІГј Г­Г Г±ГІГ°Г®ГҐГЄ...
 System\Options\DisplayMiniMap     = #True
 System\Options\DisplayTables      = #True
 System\Options\DisplayCounters    = #True
@@ -2300,7 +2300,7 @@ System\Options\SelectBeingByModel = #False
 System\Options\BlurFilter         = #True
 System\Options\ResetWarning       = #True
 SaveOptions()
-Else ; Загружаем настройки.
+Else ; Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г­Г Г±ГІГ°Г®Г©ГЄГЁ.
 ReadData(0, @System\Options, SizeOf(OptionsData))
 CloseFile(0)
 EndIf
@@ -2346,23 +2346,23 @@ Macro EditorControl()
 CheckMiniMap()
 Define FName.S, Test.S, *Being.Being, *PSquare.Square = System\GUI\PickedSquare
 Select System\GUI\Input
-Case #PB_MB_Left ; Изменить сущность на платформе.
+Case #PB_MB_Left ; Г€Г§Г¬ГҐГ­ГЁГІГј Г±ГіГ№Г­Г®Г±ГІГј Г­Г  ГЇГ«Г ГІГґГ®Г°Г¬ГҐ.
 If *PSquare <> #Null
 Define Type = #BSpectator
 *Being = *PSquare\Being
 If *Being <> #Null : Type = GetNextType(*Being\Type) : ExcludeBeing(*Being) : EndIf
 CreateBeing(*PSquare, Type, System\GUI\SelectedPlayer)
 EndIf
-Case #PB_MB_Right ; Удалить Сущность на платформе.
+Case #PB_MB_Right ; Г“Г¤Г Г«ГЁГІГј Г‘ГіГ№Г­Г®Г±ГІГј Г­Г  ГЇГ«Г ГІГґГ®Г°Г¬ГҐ.
 *Being = SelectedBeing() : If *Being : RemoveBeing(*Being) : VizualizeChanges() : EndIf
-Case #PB_Key_Space ; Изменить высоту платформы.
+Case #PB_Key_Space ; Г€Г§Г¬ГҐГ­ГЁГІГј ГўГ»Г±Г®ГІГі ГЇГ«Г ГІГґГ®Г°Г¬Г».
 If *PSquare <> #Null
 Define Height : Height = *PSquare\Height
 Define *AP.Point : *AP = *PSquare\ArrayPos
 If Height = #MaxPlatformsScale : Height = 1 : Else : Height + 1 : EndIf
 ReScalePlatform(*AP\X, *AP\Y, Height) : VizualizeChanges()
 EndIf
-Case #PB_Key_Add ; Увеличить энергетический потенциал Сущности.
+Case #PB_Key_Add ; Г“ГўГҐГ«ГЁГ·ГЁГІГј ГЅГ­ГҐГ°ГЈГҐГІГЁГ·ГҐГ±ГЄГЁГ© ГЇГ®ГІГҐГ­Г¶ГЁГ Г« Г‘ГіГ№Г­Г®Г±ГІГЁ.
 *Being = SelectedBeing()
 If SelectedBeing() : VizualizeChanges()
 *Being\EnergyLevel + 1 : ScriptTable(*Being)
@@ -2370,7 +2370,7 @@ If *Being\Owner : System\Players(*Being\Owner)\TotalEnergy + 1
 ScriptCounter(*Being\Owner)
 EndIf
 EndIf
-Case #PB_Key_Subtract ; Уменьшить энергетический потенциал Сущности.
+Case #PB_Key_Subtract ; Г“Г¬ГҐГ­ГјГёГЁГІГј ГЅГ­ГҐГ°ГЈГҐГІГЁГ·ГҐГ±ГЄГЁГ© ГЇГ®ГІГҐГ­Г¶ГЁГ Г« Г‘ГіГ№Г­Г®Г±ГІГЁ.
 *Being = SelectedBeing()
 If *Being
 If *Being\EnergyLevel > 1 : *Being\EnergyLevel - 1 : ScriptTable(*Being)
@@ -2380,18 +2380,18 @@ EndIf
 VizualizeChanges()
 EndIf
 EndIf
-Case #PB_Key_T ; Поставить на платформу дерево.
+Case #PB_Key_T ; ГЏГ®Г±ГІГ ГўГЁГІГј Г­Г  ГЇГ«Г ГІГґГ®Г°Г¬Гі Г¤ГҐГ°ГҐГўГ®.
 If *PSquare <> #Null : *Being = SelectedBeing()
 If *Being <> #Null : ExcludeBeing(*Being) : EndIf
 CreateBeing(*PSquare, #BTree, 0)
 EndIf
-Case #PB_Key_A ; Поставить на платформу Agave.
+Case #PB_Key_A ; ГЏГ®Г±ГІГ ГўГЁГІГј Г­Г  ГЇГ«Г ГІГґГ®Г°Г¬Гі Agave.
 If *PSquare <> #Null And Not Ignoring(*PSquare)
 *Being = SelectedBeing()
 If *Being <> #Null : ExcludeBeing(*Being) : EndIf
 CreateBeing(*PSquare, #BAgave, 0)
 EndIf
-Case #PB_Key_0 ; Поставить на платформу FrostBite.
+Case #PB_Key_0 ; ГЏГ®Г±ГІГ ГўГЁГІГј Г­Г  ГЇГ«Г ГІГґГ®Г°Г¬Гі FrostBite.
 If *PSquare <> #Null : *Being = SelectedBeing()
 If *Being <> #Null : ExcludeBeing(*Being) : EndIf
 CreateBeing(*PSquare, #BFrostBite, 0)
@@ -2419,13 +2419,13 @@ Define Params.MapParams : ShowPointer_()
 If MGRequester(Params, System\Options, #True) = #True
 Define I : UpdatePlayers() : ConsumeParams()
 ForEach System\Beings() : ScriptTable(System\Beings()) : Next
-VizualizeChanges() ; Визуализация изменений.
+VizualizeChanges() ; Г‚ГЁГ§ГіГ Г«ГЁГ§Г Г¶ГЁГї ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГ©.
 EndIf : PerformOptions() : HidePointer_()
 Case #PB_Key_R
-If System\GUI\MapFName <> "" ; Если есть куда сохранять...
+If System\GUI\MapFName <> "" ; Г…Г±Г«ГЁ ГҐГ±ГІГј ГЄГіГ¤Г  Г±Г®ГµГ°Г Г­ГїГІГј...
 If SaveMap(System\GUI\MapFName) : System\GUI\Changed = #False 
 AssembleTitle(System\GUI\MapFName, System\GUI\Changed) : EndIf
-HidePointer_() ; На всякий случай скрываем курсор.
+HidePointer_() ; ГЌГ  ГўГ±ГїГЄГЁГ© Г±Г«ГіГ·Г Г© Г±ГЄГ°Г»ГўГ ГҐГ¬ ГЄГіГ°Г±Г®Г°.
 EndIf
 Case #PB_Key_U ; Reincarnation.
 *Being = SelectedBeing()
@@ -2440,9 +2440,9 @@ If *Being\Ascended : AscendBeing(*Being, #True) : Else : AscendBeing(*Being) : E
 EndIf
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 Case #PB_Key_G
-If *PSquare ; Если что-то подсвечено...
+If *PSquare ; Г…Г±Г«ГЁ Г·ГІГ®-ГІГ® ГЇГ®Г¤Г±ГўГҐГ·ГҐГ­Г®...
 If *PSquare\CellType = #pIgnorance
-Define NewGold = (*PSquare\Gold + 1) % 4 ; Поворот на месте.
+Define NewGold = (*PSquare\Gold + 1) % 4 ; ГЏГ®ГўГ®Г°Г®ГІ Г­Г  Г¬ГҐГ±ГІГҐ.
 Else : NewGold = LogNot(*PSquare\Gold) : EndIf
 ChangePlatform(*PSquare\ArrayPos\X, *PSquare\ArrayPos\Y, NewGold)
 VizualizeChanges()
@@ -2455,7 +2455,7 @@ EndIf
 Case #PB_Key_N
 If *PSquare
 RestructureCell(*PSquare\ArrayPos\X, *PSquare\ArrayPos\Y, Invert(*PSquare\CellType, #pIgnorance))
-If *PSquare\Being : ScriptDataBoard(*PSquare\Being) : EndIf ; Отражаем.
+If *PSquare\Being : ScriptDataBoard(*PSquare\Being) : EndIf ; ГЋГІГ°Г Г¦Г ГҐГ¬.
 VizualizeChanges()
 EndIf
 Case #PB_Key_Home
@@ -2467,7 +2467,7 @@ If *PSquare <> #Null And Not (Ignoring(*PSquare) And IsReincarnated(System\GUI\I
 If Or Ignoring(*PSquare) Or *PSquare\Gold = #False Or Not IsAscended(System\GUI\InsertionBeing) 
 *Being = *PSquare\Being : If *Being : ExcludeBeing(*Being) : EndIf
 If System\GUI\InsertionBeing = #BTree Or System\GUI\InsertionBeing = #BAgave : *Being = 0
-Else : *Being = System\GUI\SelectedPlayer : EndIf ; Выставляем будущего хозяина.
+Else : *Being = System\GUI\SelectedPlayer : EndIf ; Г‚Г»Г±ГІГ ГўГ«ГїГҐГ¬ ГЎГіГ¤ГіГ№ГҐГЈГ® ГµГ®Г§ГїГЁГ­Г .
 CreateBeing(*PSquare, System\GUI\InsertionBeing, *Being) : EndIf : EndIf
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 Case #PB_Key_O
@@ -2517,7 +2517,7 @@ EndMacro
 
 Macro SystemControls()
 Select System\GUI\Input
-Case #PB_Key_Escape : GotoMainPanel() ; Возврат на панель созданий карты.
+Case #PB_Key_Escape : GotoMainPanel() ; Г‚Г®Г§ГўГ°Г ГІ Г­Г  ГЇГ Г­ГҐГ«Гј Г±Г®Г§Г¤Г Г­ГЁГ© ГЄГ Г°ГІГ».
 Case #PB_Key_M : System\Options\DisplayMiniMap  = LogNot(System\Options\DisplayMiniMap)
 Case #PB_Key_E : System\Options\DisplayTables   = LogNot(System\Options\DisplayTables)
 Case #PB_Key_C : System\Options\DisplayCounters = LogNot(System\Options\DisplayCounters)
@@ -2536,7 +2536,7 @@ AnimateWorld()
 Vizualization()
 SystemControls()
 WaitTimer_(System\SyncTimer)
-; ^Задержка, если скорость программы слишком большая.^
+; ^Г‡Г Г¤ГҐГ°Г¦ГЄГ , ГҐГ±Г«ГЁ Г±ГЄГ®Г°Г®Г±ГІГј ГЇГ°Г®ГЈГ°Г Г¬Г¬Г» Г±Г«ГЁГёГЄГ®Г¬ ГЎГ®Г«ГјГёГ Гї.^
 ForEver
 ; IDE Options = PureBasic 5.30 Beta 4 (Windows - x86)
 ; Folding = j+-------------+
