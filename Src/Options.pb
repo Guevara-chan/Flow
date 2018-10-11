@@ -1,6 +1,6 @@
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 ; Flow's setup interface v0.3
-; Developed in 2007 by Chrono Syndrome.
+; Developed in 2009 by Chrono Syndrome.
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
 ;{ Definitions
@@ -169,5 +169,5 @@ CloseWindow(#Window_Options) : ProcedureReturn #False
 EndSelect
 ForEver
 EndProcedure
-; IDE Options = PureBasic 5.21 LTS (Windows - x86)
+; IDE Options = PureBasic 5.40 LTS (Windows - x86)
 ; Folding = -

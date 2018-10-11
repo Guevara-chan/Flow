@@ -1,6 +1,6 @@
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 ; Flow's random map generator v0.48
-; Developed in 2007 by Guevara-chan.
+; Developed in 2009 by Guevara-chan.
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
 ;{ Definitions
@@ -476,5 +476,5 @@ Case #PB_Event_CloseWindow : CloseWindow(#MGWindow) : ProcedureReturn #False
 EndSelect
 ForEver
 EndProcedure
-; IDE Options = PureBasic 5.30 Beta 4 (Windows - x86)
+; IDE Options = PureBasic 5.40 LTS (Windows - x86)
 ; Folding = --

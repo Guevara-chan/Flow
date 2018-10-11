@@ -1,6 +1,6 @@
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 ; Flow's map editor setup interface v0.3
-; Developed in 2007 by Guevara-chan.
+; Developed in 2009 by Guevara-chan.
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
 ;{ Definitions
@@ -653,5 +653,5 @@ Case #PB_Event_CloseWindow : CloseMG()
 EndSelect
 ForEver
 EndProcedure
-; IDE Options = PureBasic 5.21 LTS (Windows - x86)
+; IDE Options = PureBasic 5.40 LTS (Windows - x86)
 ; Folding = -----

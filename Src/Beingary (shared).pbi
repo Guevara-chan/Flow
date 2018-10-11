@@ -70,9 +70,7 @@ Case #BDesire    : ProcedureReturn #BMeanie
 Default : ProcedureReturn Type
 EndSelect
 EndProcedure
-; IDE Options = PureBasic 5.30 Beta 4 (Windows - x86)
-; CursorPosition = 49
-; FirstLine = 19
+; IDE Options = PureBasic 5.40 LTS (Windows - x86)
 ; Folding = -
 ; EnableUnicode
 ; EnableXP
