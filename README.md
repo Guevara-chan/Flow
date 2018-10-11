@@ -16,7 +16,7 @@
 -	Random map generation mode.
 
 ## /Reassembling/:
-**Flow: God is Dead** is written completely in [PureBasic v4.40](http://purebasic.com), though compatible with *5.2x (LTS)*.
+**Flow: God is Dead** is written completely in [PureBasic v4.40](http://purebasic.com), though compatible with *5.2x (LTS)*.  
 It relies on Blitz3D freeware engine, which is bundled here as DLL.  
 To rebuild - compile `Main.pb` as root sourcefile.  
 
