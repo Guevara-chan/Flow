@@ -323,9 +323,11 @@ Case 3 : ProcedureReturn #IGuardianAI
 EndSelect
 EndProcedure
 
+CompilerIf #PB_Compiler_Version => 560 ; Не было печали - апдейтов накачали.
 Macro CRC32Fingerprint(Buffer, Size) ; Pseudo-procedure.
 Val("$"+Fingerprint(Buffer, Size, #PB_Cipher_CRC32))
 EndMacro
+CompilerEndIf
 
 Global NewList MapLinks.LinkData()
 Procedure AddLinkData(Link.S)
@@ -658,6 +660,4 @@ EndSelect
 ForEver
 EndProcedure
 ; IDE Options = PureBasic 5.70 LTS (Windows - x86)
-; CursorPosition = 326
-; FirstLine = 42
 ; Folding = 9----
