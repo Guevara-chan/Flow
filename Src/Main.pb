@@ -46,7 +46,7 @@ IncludeFile "B3D.PB"     ; B3D SDK Definitions.
 IncludeFile "MG.PB"      ; Map generator.
 IncludeFile "Options.PB" ; Options interface.
 IncludeFile "FModEX.PB"  ; FMod EX Definitions
-Prototype FontLoader(FileName.s, Flag, Dummy)
+Prototype FontLoader(FileName.p-ascii, Flag, Dummy)
 
 ;{ Definitions
 ;{ --Enumerations--
@@ -958,10 +958,10 @@ EndProcedure
 Macro PrepareObstacle(Entity, Offset = 0) ; Pseudo-procedure.
 SetupBox(Entity, Entity, Offset) : EntityPickMode_(Entity, 3, #True) : HideEntity_(Entity)
 EndMacro
-Procedure LoadAnimEtalone(FName.S, Mode = 'Ghost')
+Procedure LoadAnimEtalone(FName.S, Mode = 'Ghst')
 Define *Entity = LoadAnimMesh_(FName.S)
 Select Mode ; Выбираем по режиму.
-Case 'Ghost' : ComplexEntityAlpha(*Entity, 0.5) ; Призрачное представление.
+Case 'Ghst' : ComplexEntityAlpha(*Entity, 0.5) ; Призрачное представление.
 Case 'Hull'  : ComplexEntityBlend(*Entity, 3) : ComplexEntityFX(*Entity, 1)
 EndSelect : HideEntity_(*Entity)
 ProcedureReturn *Entity
@@ -5747,6 +5747,9 @@ BeginBlitz3D_() : SetBlitz3DDebugMode_(0)
 Graphics3D_(#ScreenWidth, #ScreenHeight, #ScreenDepth, 2)
 SetBlitz3DTitle_(#GameTitle, "") : HidePointer_()
 SetCurrentDirectory("Media\") : UsePNGImageEncoder()
+CompilerIf #PB_Compiler_Unicode ; Don't ask. Just, like, really. Don't ask.
+LoadAnimTexture_("", 0, 0, 0, 0, 0)
+CompilerEndIf
 System\GameWindow = FindGameWindow()
 System\OldCallBack = GetWindowLong_(System\GameWindow, #GWL_WNDPROC)
 SetWindowLong_(System\GameWindow, #GWL_WNDPROC, @GameCB())
@@ -5757,7 +5760,9 @@ System\InsideText  = LoadImage__("Inside.png")
 MidHandle_(System\InsideText) : MidHandle_(System\NothingText)
 MidHandle_(System\VoidEye)    : ShowNothing()
 ; -Missing API extraction-
-System\FontLoader = GetProcAddress_(GetModuleHandle_("GDI32.DLL"), "AddFontResourceExA")
+Define *proc = @"AddFontResourceExA"
+CompilerIf #PB_Compiler_Unicode : *proc = Ascii(PeekS(*proc)) : CompilerEndIf ; Let us hate Fred together.
+System\FontLoader = GetProcAddress_(GetModuleHandle_("GDI32.DLL"), *proc)
 ; --Preparing etalones--
 ; -Platforms-
 System\PlatformRed   = LoadMesh_("Platform.B3D")
@@ -6816,13 +6821,12 @@ AnimateWorld()
 Vizualization()
 SystemControls()
 WaitTimer_(System\GameTimer)
-ForEver 
-; IDE Options = PureBasic 5.40 LTS (Windows - x86)
-; CursorPosition = 2
+ForEver
+; IDE Options = PureBasic 5.70 LTS (Windows - x86)
 ; Folding = C0----8----88-------------------48
-; Markers = 1095,5350,5595
 ; EnableThread
 ; UseIcon = ..\Media\Eye.ico
 ; Executable = ..\Flow.exe
 ; CurrentDirectory = ..\
 ; Warnings = Display
+; EnableUnicode
