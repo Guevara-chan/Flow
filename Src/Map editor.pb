@@ -2114,7 +2114,11 @@ CompilerIf Not #PB_Compiler_Debugger : OnErrorCall(@ErrorHandler())
 CompilerEndIf
 Define FixDir.s = GetPathPart(ProgramFilename()) ; На случай cmd и тому подобного.
 If FixDir <> GetTemporaryDirectory() : SetCurrentDirectory(FixDir) : EndIf
-UseCRC32Fingerprint()
+; -Legacy-
+CompilerIf #PB_Compiler_Version => 540
+UseCRC32Fingerprint() ; Legacy codec.
+UseMD5Fingerprint()   ; Legacy codec.
+CompilerEndIf
 ; -Blitz init-
 BeginBlitz3D_() : SetBlitz3DDebugMode_(0)
 Graphics3D_(#ScreenWidth, #ScreenHeight, 32, 2)
@@ -2540,7 +2544,7 @@ WaitTimer_(System\SyncTimer)
 ; ^Задержка, если скорость программы слишком большая.^
 ForEver
 ; IDE Options = PureBasic 5.70 LTS (Windows - x86)
-; Folding = h+--v--------4-3
+; Folding = h+--v--------4-+
 ; UseIcon = ..\Media\Blank_Eye.ico
 ; Executable = ..\Map editor.exe
 ; DisableDebugger
