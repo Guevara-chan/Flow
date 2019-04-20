@@ -845,3 +845,5 @@ Global EntityID_._EntityID = GetFunction(B3DLibrary, "bbEntityID")
 PrototypeC.l _ActiveTextures()
 Global ActiveTextures_._ActiveTextures = GetFunction(B3DLibrary, "bbActiveTextures")
 ; IDE Options = PureBasic 5.40 LTS (Windows - x86)
+; CursorPosition = 404
+; FirstLine = 401

@@ -323,6 +323,10 @@ Case 3 : ProcedureReturn #IGuardianAI
 EndSelect
 EndProcedure
 
+Macro CRC32Fingerprint(Buffer, Size) ; Pseudo-procedure.
+Val("$"+Fingerprint(Buffer, Size, #PB_Cipher_CRC32))
+EndMacro
+
 Global NewList MapLinks.LinkData()
 Procedure AddLinkData(Link.S)
 AddElement(MapLinks()) 
@@ -653,5 +657,7 @@ Case #PB_Event_CloseWindow : CloseMG()
 EndSelect
 ForEver
 EndProcedure
-; IDE Options = PureBasic 5.40 LTS (Windows - x86)
-; Folding = -----
+; IDE Options = PureBasic 5.70 LTS (Windows - x86)
+; CursorPosition = 326
+; FirstLine = 42
+; Folding = 9----

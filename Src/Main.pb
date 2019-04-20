@@ -3,7 +3,7 @@
 ; Developed in 2009 by Guevara-chan.
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
-;{ TODO[
+;{ TO.DO[
 ; Improve FPS. Особенно у частиц.
 ; Повысить разрешение до 1024x768.
 ; Доделать экстраверсальную анимацию Desire.
@@ -31,7 +31,7 @@
 ; ...Сделать AutoUpdater.
 ; ...Добавить музыки.
 ; ...Improve AI.
-;} ]TODO
+;} ]TO.DO
 
 ; SDK Bugs[
 ; CopyPixel(Fast) - не копируют значение альфы.
@@ -6823,7 +6823,7 @@ SystemControls()
 WaitTimer_(System\GameTimer)
 ForEver
 ; IDE Options = PureBasic 5.70 LTS (Windows - x86)
-; Folding = C0----8----88-------------------48
+; Folding = D0----8----88-------------------48
 ; EnableThread
 ; UseIcon = ..\Media\Eye.ico
 ; Executable = ..\Flow.exe

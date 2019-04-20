@@ -3,11 +3,11 @@
 ; Developed in 2009 by Guevara-chan.
 ; *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*
 
-; TODO[
+; TO.DO[
 ; Добавить проверку тегов разметки в брифингах.
 ; Улучшить поддержку элеваторов.
 ; ...Улучшить интерфейс.
-; ]TODO
+; ]TO.DO
 
 ; SDK Bugs[
 ; CopyRect - не работает.
@@ -438,7 +438,7 @@ Procedure CloneTexture(*Tex)
 Define TWidth = TextureWidth_(*Tex)
 Define THeight = TextureHeight_(*Tex)
 Define *Clone = CreateTexture_(TWidth, THeight, 8)
-CopyRect_(0, 0, TWidth, THeight, 0, 0, TextureBuffer_(*Tex), TextureBuffer_(*Clone))
+CopyRect__(0, 0, TWidth, THeight, 0, 0, TextureBuffer_(*Tex), TextureBuffer_(*Clone))
 ProcedureReturn *Clone
 EndProcedure
 
@@ -1747,7 +1747,7 @@ EndIf
 EndMacro
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 Macro CopyScreen(Src, Target) ; Pseudo-procedure.
-CopyRect_(0, 0, #ScreenWidth, #ScreenHeight, 0, 0, Src, Target)
+CopyRect__(0, 0, #ScreenWidth, #ScreenHeight, 0, 0, Src, Target)
 EndMacro
 
 Macro UpdateBlur() ; Pseudo-procedure.
@@ -2114,6 +2114,7 @@ CompilerIf Not #PB_Compiler_Debugger : OnErrorCall(@ErrorHandler())
 CompilerEndIf
 Define FixDir.s = GetPathPart(ProgramFilename()) ; На случай cmd и тому подобного.
 If FixDir <> GetTemporaryDirectory() : SetCurrentDirectory(FixDir) : EndIf
+UseCRC32Fingerprint()
 ; -Blitz init-
 BeginBlitz3D_() : SetBlitz3DDebugMode_(0)
 Graphics3D_(#ScreenWidth, #ScreenHeight, 32, 2)
@@ -2126,9 +2127,9 @@ System\GameWindow = FindGameWindow()
 System\OldCallBack = GetWindowLong_(System\GameWindow, #GWL_WNDPROC)
 SetWindowLong_(System\GameWindow, #GWL_WNDPROC, @GameCB())
 ; --Screen filler--
-System\VoidEye = LoadImage_("VoidEye.png") 
-System\NothingText = LoadImage_("Nothing.png") 
-System\InsideText  = LoadImage_("Inside.png") 
+System\VoidEye = LoadImage__("VoidEye.png") 
+System\NothingText = LoadImage__("Nothing.png") 
+System\InsideText  = LoadImage__("Inside.png") 
 MidHandle_(System\InsideText) : MidHandle_(System\NothingText)
 MidHandle_(System\VoidEye)   : setbuffer_(BackBuffer_()) : ShowNothing()
 ; --Preparing etalones--
@@ -2267,12 +2268,12 @@ CameraRange_(System\Camera, 1, 1500)
 System\Cursor = LoadAnimImage_("Cursor.PNG", 32, 32, 0, #CurFrames)
 MaskImage_(System\Cursor, 5, 7, 6)
 System\MiniMap = CreateImage_(1, 1, 1)
-System\RMark = LoadImage_("RMark.PNG")
+System\RMark = LoadImage__("RMark.PNG")
 MidHandle_(System\RMark)
 System\Mixer = CreateImage_(1, 1, 1)
-System\CountersTitle = LoadImage_("CountersTitle.PNG")
-System\DataBoard = LoadImage_("DataBoard.PNG")
-System\AscendantBoard = LoadImage_("AscendantBoard.PNG")
+System\CountersTitle = LoadImage__("CountersTitle.PNG")
+System\DataBoard = LoadImage__("DataBoard.PNG")
+System\AscendantBoard = LoadImage__("AscendantBoard.PNG")
 System\Counters = LoadAnimImage_("Counters.PNG", #CounterWidth, #CounterHeight, 0, #MaxPlayers)
 System\CountersData\Left = ImageWidth_(System\Counters)
 System\CountersData\Top = ImageHeight_(System\Counters)
@@ -2538,9 +2539,8 @@ SystemControls()
 WaitTimer_(System\SyncTimer)
 ; ^Задержка, если скорость программы слишком большая.^
 ForEver
-; IDE Options = PureBasic 5.40 LTS (Windows - x86)
-; CursorPosition = 2
-; Folding = j+-------------+
+; IDE Options = PureBasic 5.70 LTS (Windows - x86)
+; Folding = h+--v--------4-3
 ; UseIcon = ..\Media\Blank_Eye.ico
 ; Executable = ..\Map editor.exe
 ; DisableDebugger
