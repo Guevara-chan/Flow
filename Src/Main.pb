@@ -6829,4 +6829,3 @@ ForEver
 ; Executable = ..\Flow.exe
 ; CurrentDirectory = ..\
 ; Warnings = Display
-; EnableUnicode
